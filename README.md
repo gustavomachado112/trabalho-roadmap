@@ -24,7 +24,7 @@ Quais são as principais ações que o sistema permitirá? (ex: cadastrar, busca
 
 ---
 
-## ✅ 5. Requisitos Funcionais  
+
 ## ✅ 5. Requisitos Funcionais  
 O que o sistema deve fazer de forma obrigatória.  
 **R:**  
