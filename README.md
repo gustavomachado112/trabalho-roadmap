@@ -26,7 +26,7 @@ Quais são as principais ações que o sistema permitirá? (ex: cadastrar, busca
 
 ## ✅ 5. Requisitos Funcionais  
 O que o sistema deve fazer de forma obrigatória.
-
+**R:**Permitir que o usuário crie, edite e apague suas tarefas e compromissos,Avisar o usuário com um alerta quando a tarefa estiver próxima do horário,Mostrar uma lista com todas as tarefas para o usuário visualizar,Permitir buscar uma tarefa pelo nome ou data
 ---
 
 ## 🚀 6. Requisitos Não Funcionais  
@@ -49,7 +49,7 @@ O que o sistema entregará ao usuário (ex: relatórios, resultados, alertas)
 
 ## 👤 9. Atores Envolvidos  
 Quem interage com o sistema? (ex: administrador, usuário comum, visitante)
-
+**R:**Usuário comum: pessoa que usa a agenda para organizar suas tarefas diárias
 ---
 
 ## 📌 10. Casos de Uso ou Cenários  
