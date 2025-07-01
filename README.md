@@ -1,4 +1,4 @@
-# 📅 Agenda inteligente com integração a calendário e tarefas
+# 📅 Agenda inteligente 
 
 ## 📌 1. Nome do Projeto  
 Identificação clara e objetiva do sistema.  
