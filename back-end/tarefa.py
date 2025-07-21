@@ -1,17 +1,17 @@
+from dataclasses import dataclass
+from typing import Optional
 import datetime
 
+@dataclass
 class Tarefa:
-    def __init__(self, tarefa_id: int, usuario_id: int, nome_tarefa: str, 
-                 data_expirar: datetime.datetime = None, descricao_tarefa: str = None):
-        self.tarefa_id = tarefa_id
-        self.usuario_id = usuario_id
-        self.nome_tarefa = nome_tarefa
-        self.data_expirar = data_expirar
-        self.descricao_tarefa = descricao_tarefa
+    tarefa_id: int
+    usuario_id: int
+    nome_tarefa: str
+    data_expirar: Optional[datetime.datetime] = None
+    descricao_tarefa: Optional[str] = None
 
     def __str__(self):
-        data_formatada = self.data_expirar.strftime('%d/%m/%Y %H:%M') if self.data_expirar else str(self.data_expirar)
-        
+        data_formatada = self.data_expirar.strftime('%d/%m/%Y %H:%M') if self.data_expirar else "Sem prazo"
         return (f"ID da Tarefa: {self.tarefa_id}\n"
                 f"Usuário: {self.usuario_id}\n"
                 f"Título: {self.nome_tarefa}\n"
@@ -20,8 +20,7 @@ class Tarefa:
 
 print("Agenda Dos Guris")
 
-# Esses sao os exemplos que eu montei.
-# GP Interlagos
+# Exemplos
 tarefa_gp_interlagos = Tarefa(
     tarefa_id=201,
     usuario_id=1,
@@ -33,7 +32,6 @@ print("GP De Interlagos")
 print(tarefa_gp_interlagos)
 print("\n")
 
-# Estudar códigos
 tarefa_estudo_python = Tarefa(
     tarefa_id=202,
     usuario_id=1,
