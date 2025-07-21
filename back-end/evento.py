@@ -1,24 +1,25 @@
+from dataclasses import dataclass
+from typing import Optional
 import datetime
 
+@dataclass
 class Evento:
-    def __init__(self, evento_id: int, agenda_id: int, nome_evento: str, 
-                 data_inicio_evento: datetime.datetime, data_fim_evento: datetime.datetime = None):
-        self.evento_id = evento_id          
-        self.agenda_id = agenda_id          
-        self.nome_evento = nome_evento      
-        self.data_inicio_evento = data_inicio_evento 
-        self.data_fim_evento = data_fim_evento    
+    evento_id: int
+    agenda_id: int
+    nome_evento: str
+    data_inicio_evento: datetime.datetime
+    data_fim_evento: Optional[datetime.datetime] = None
 
     def __str__(self):
         inicio_formatado = self.data_inicio_evento.strftime('%d/%m/%Y %H:%M')
         
         if self.data_fim_evento:
             if self.data_fim_evento.date() == self.data_inicio_evento.date():
-                fim_formatado = self.data_fim_evento.strftime('%H:%M') 
+                fim_formatado = self.data_fim_evento.strftime('%H:%M')
             else:
                 fim_formatado = self.data_fim_evento.strftime('%d/%m/%Y %H:%M')
         else:
-            fim_formatado = "Não informado" 
+            fim_formatado = "Não informado"
         
         return (f"ID do Evento: {self.evento_id}\n"
                 f"ID da Agenda: {self.agenda_id}\n"
@@ -70,7 +71,7 @@ if __name__ == "__main__":
         )
 
         print("\n--- Evento da galera , Feito piazada . ---")
-        print(novo_evento) 
+        print(novo_evento)
 
     except ValueError:
         print("\nErro: Por favor, digite APENAS números inteiros onde solicitado.")
