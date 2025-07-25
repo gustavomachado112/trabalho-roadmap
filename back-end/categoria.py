@@ -13,7 +13,7 @@ if __name__ == "__main__":
     try:
         categoria_id = int(input("ID da Categoria: "))
         nome = input("Nome da Categoria: ")
-        descricao = input("Descrição (opcional): ")
+        descricao = input("Descrição (Se voce quiser): ")
         tipo_evento = input("Tipo de Evento: ")
         quantidade = int(input("Quantidade de eventos nessa categoria: "))
 
@@ -25,10 +25,8 @@ if __name__ == "__main__":
             quantidade_categoria=quantidade
         )
 
-        print("\nCategoria criada com sucesso:")
+        print("\nCategoria criada amigo:")
         print(nova_categoria)
 
     except ValueError:
         print("\nErro: ID e quantidade precisam ser números.")
-    except Exception as e:
-        print(f"\nErro inesperado: {e}")
