@@ -75,7 +75,5 @@ if __name__ == "__main__":
 
     except ValueError:
         print("\nErro: Por favor, digite APENAS números inteiros onde solicitado.")
-    except Exception as e:
-        print(f"\nOcorreu um erro inesperado: {e}.")
 
     print("\n--- Xandao vai ficar feliz , ele esta orgulhoso! ---")
