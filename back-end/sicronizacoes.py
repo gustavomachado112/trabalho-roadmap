@@ -14,7 +14,7 @@ def adicionar_sicronizacao(usuario_id, tipo_servico, token_acesso, sicronizacao_
     }
 
     sicronizacoes.append(nova)
-    print("Estamos fazendo sua sicronicacao, agurde um pouco chefe.")
+    print("Estamos fazendo sua sicronicacao, aguarde um pouco chefe.")
     proximo_id += 1
 
 def mostrar_sicronizacoes():
@@ -30,6 +30,6 @@ def mostrar_sicronizacoes():
 
 # Mesma coisa dos 2 ultimos .
 adicionar_sicronizacao(1, "Drive do google", "saopauloseireb", "25-09-11 16:45:00")
-adicionar_sicronizacao(2, "draw.io", "Lula1234LL", "25-04-31 14:37:45")
+adicionar_sicronizacao(2, "draw.io", "Lula1234LL", "25-04-29 14:37:45")
 mostrar_sicronizacoes()
 
