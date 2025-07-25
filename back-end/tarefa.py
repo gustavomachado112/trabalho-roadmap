@@ -18,26 +18,33 @@ class Tarefa:
                 f"Prazo: {data_formatada}\n"
                 f"Detalhes: {self.descricao_tarefa}\n")
 
-print("Agenda Dos Guris")
+def criar_tarefa():
+    print("Cadastro de nova tarefa:\n")
+    try:
+        tarefa_id = int(input("ID da tarefa: "))
+        usuario_id = int(input("ID do usuário: "))
+        nome_tarefa = input("Nome da tarefa: ")
 
-# Exemplos
-tarefa_gp_interlagos = Tarefa(
-    tarefa_id=201,
-    usuario_id=1,
-    nome_tarefa="Assistir ao GP de São Paulo (Interlagos)",
-    data_expirar=datetime.datetime(2025, 11, 9, 14, 0, 0),
-    descricao_tarefa="Preparar os snacks, chamar os amigos e torcer pela corrida mais emocionante do ano!"
-)
-print("GP De Interlagos")
-print(tarefa_gp_interlagos)
-print("\n")
+        prazo_input = input("Data de expiração (dd/mm/aaaa HH:MM) ou deixe vazio para sem prazo: ")
+        if prazo_input:
+            data_expirar = datetime.datetime.strptime(prazo_input, '%d/%m/%Y %H:%M')
+        else:
+            data_expirar = None
 
-tarefa_estudo_python = Tarefa(
-    tarefa_id=202,
-    usuario_id=1,
-    nome_tarefa="Estudar Estruturas de Dados em Python",
-    data_expirar=datetime.datetime(2025, 7, 28, 19, 0, 0),
-    descricao_tarefa="Revisar listas, tuplas, dicionários e conjuntos. Fazer exercícios práticos."
-)
-print("Meta de Estudo:")
-print(tarefa_estudo_python)
+        descricao_tarefa = input("Descrição da tarefa (so se voce quiser): ") or None
+
+        tarefa = Tarefa(
+            tarefa_id=tarefa_id,
+            usuario_id=usuario_id,
+            nome_tarefa=nome_tarefa,
+            data_expirar=data_expirar,
+            descricao_tarefa=descricao_tarefa
+        )
+
+        print("\nTarefa cadastrada com sucesso:")
+        print(tarefa)
+    except ValueError:
+        print("Erro: dados estao errados arume pfvr ,  tente novamente com os formatos certos.")
+
+if __name__ == "__main__":
+    criar_tarefa()
