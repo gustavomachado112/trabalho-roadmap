@@ -6,8 +6,7 @@ class Compartilhamento:
     agenda_id: int
     usuario: str
     compartilhar_tarefa: str
-    permissao: str  # valores possíveis: leitura, escrita, total
-
+    permissao: str 
 def cadastrar_compartilhamento():
     try:
         compartilhamento_id = int(input("ID da tarefa que voce quer compartilhar: "))
