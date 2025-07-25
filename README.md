@@ -39,7 +39,15 @@ O que o sistema deve fazer de forma obrigatória.
 
 ## 🚀 6. Requisitos Não Funcionais  
 Qualidade do sistema (ex: desempenho, segurança, usabilidade, tempo de resposta)  
-**R:** Desempenho , informacoes pessoas ex: telefone , cpf , endereco , data de nascimento  e etc...
+**R:** Desempenho rápido na consulta e atualização dos dados.
+
+Segurança básica para proteção dos dados pessoais (senha, email, telefone, CPF).
+
+Usabilidade simples e clara para facilitar o uso por qualquer pessoa.
+
+Tempo de resposta adequado, especialmente para notificações em tempo real.
+
+Persistência local confiável dos dados (banco local).
 
 ---
 
