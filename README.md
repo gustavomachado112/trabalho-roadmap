@@ -1,45 +1,27 @@
-Tema:cAgenda inteligente com integração a calendário e tarefas
+📅 Agenda Inteligente
+📌 1. Nome do Projeto
+Agenda inteligente
 
-# 📅 Agenda inteligente 
+🎯 2. Objetivo do Sistema
+Organizar tarefas com agenda inteligente.
 
-## 📌 1. Nome do Projeto  
-Identificação clara e objetiva do sistema.  
-**R:** Agenda inteligente
+👥 3. Público-Alvo / Usuários
+Pessoas adultas que querem organizar suas tarefas diárias.
 
----
+⚙️ 4. Funcionalidades Principais
+Permitir modificar tarefas, avisar quando uma tarefa estiver próxima e buscar tarefas.
 
-## 🎯 2. Objetivo do Sistema  
-O que o sistema se propõe a resolver? Qual problema será atacado?  
-**R:** orgarnizar tarefas com agenda inteligente .
+✅ 5. Requisitos Funcionais
+**- Permitir que o usuário crie, edite e apague suas tarefas e compromissos.
 
----
+Avisar o usuário com um alerta quando a tarefa estiver próxima do horário.
 
-## 👥 3. Público-Alvo / Usuários  
-Quem usará o sistema? (ex: alunos, professores, clientes, gestores)  
-**R:** Pessoas Adultas e que querem organizar sua tarefas diarias
+Mostrar uma lista com todas as tarefas para o usuário visualizar.
 
----
+Permitir buscar uma tarefa pelo nome ou data.**
 
-## ⚙️ 4. Funcionalidades Principais  
-Quais são as principais ações que o sistema permitirá? (ex: cadastrar, buscar, agendar)  
-**R:** Agenda poder modificar elas , avisar qundo uma tarefa estiver proxima , buscar tarefa
-
----
-
-
-## ✅ 5. Requisitos Funcionais  
-O que o sistema deve fazer de forma obrigatória.  
-**R:**  
-- Permitir que o usuário crie, edite e apague suas tarefas e compromissos  
-- Avisar o usuário com um alerta quando a tarefa estiver próxima do horário  
-- Mostrar uma lista com todas as tarefas para o usuário visualizar  
-- Permitir buscar uma tarefa pelo nome ou data
-
----
-
-## 🚀 6. Requisitos Não Funcionais  
-Qualidade do sistema (ex: desempenho, segurança, usabilidade, tempo de resposta)  
-**R:** Desempenho rápido na consulta e atualização dos dados.
+🚀 6. Requisitos Não Funcionais
+**- Desempenho rápido na consulta e atualização dos dados.
 
 Segurança básica para proteção dos dados pessoais (senha, email, telefone, CPF).
 
@@ -47,68 +29,94 @@ Usabilidade simples e clara para facilitar o uso por qualquer pessoa.
 
 Tempo de resposta adequado, especialmente para notificações em tempo real.
 
-Persistência local confiável dos dados (banco local).
+Persistência local confiável dos dados (banco local).**
 
----
+📝 7. Entradas do Sistema
+**- Dados pessoais: nome, email, senha, telefone, CPF (opcional).
 
-## 📝 7. Entradas do Sistema  
-Dados que o usuário fornecerá (ex: nome, CPF, data de nascimento)  
-**R:** E-mail, senha e nome .
+Dados das tarefas e eventos: nome, descrição, datas de início e fim, prioridade, status.
 
----
+Dados de compartilhamento e permissões.
 
-## 📤 8. Saídas do Sistema  
-O que o sistema entregará ao usuário (ex: relatórios, resultados, alertas)  
-**R:** Notificacao de tarefa , informacoes  e etc..
+Dados para sincronização externa (tokens, tipos de serviço).**
 
----
+📤 8. Saídas do Sistema
+**- Notificações e alertas sobre tarefas próximas do prazo.
 
-## 👤 9. Atores Envolvidos  
-Quem interage com o sistema? (ex: administrador, usuário comum, visitante)
-**R:**Usuário comum: pessoa que usa a agenda para organizar suas tarefas diárias
----
+Listas e relatórios de tarefas, eventos e calendários.
 
-## 📌 10. Casos de Uso ou Cenários  
-Exemplos reais de como o sistema será usado no dia a dia.
+Confirmações de criação, edição ou exclusão de dados.
 
----
+Exibição dos dados cadastrados com formatação amigável.**
 
-## 🔄 11. Fluxo das Operações  
-Ordem e lógica das ações no sistema (ex: login → cadastrar evento → emitir comprovante)  
-(fzr um fluxo grama)
+👤 9. Atores Envolvidos
+Usuário comum: pessoa que usa a agenda para organizar suas tarefas diárias.
 
----
+📌 10. Casos de Uso ou Cenários
+**- Usuário cadastra uma nova tarefa com prazo e descrição.
 
-## ⚠️ 12. Restrições de Uso  
-Regras impostas (ex: só admins podem excluir, limite de caracteres)
+Usuário recebe alerta 30 minutos antes da tarefa expirar.
 
----
+Usuário busca por tarefas relacionadas a um projeto específico.
 
-## 🖥️ 14. Plataforma Alvo  
-Web, mobile, desktop ou multiplataforma?
+Usuário compartilha uma tarefa com colega, definindo permissão de leitura.
 
----
+Usuário visualiza o calendário semanal com todos os eventos.**
 
-## 🔒 15. Autenticação e Segurança  
-O sistema exige login? Quais níveis de permissão?
+🔄 11. Fluxo das Operações
+**- Login do usuário (autenticação).
 
----
+Menu principal: escolher entre criar, editar, listar ou buscar tarefas/eventos.
 
-## 🗂️ 16. Armazenamento de Dados  
-Que tipo de dados será salvo? Onde e como?  
-**R:** informacoes dos clientes , sera salvo localmente  num banco .
+Cadastro ou edição da tarefa/evento com dados necessários.
 
----
+Salvamento local dos dados.
 
-## 🎨 17. Layout e Design Desejado  
-Referências visuais, cores, estilo ou acessibilidade (se houver)
+Verificação periódica para enviar notificações.
 
----
+Visualização e compartilhamento.
 
-## 🏆 18. Critérios de Sucesso  
-Como saberemos que o projeto está concluído com êxito?
+Logout ou encerramento da sessão.**
 
----
+⚠️ 12. Restrições de Uso
+**- Apenas o criador pode editar ou excluir suas tarefas.
+
+Permissões de leitura/escrita para tarefas compartilhadas.
+
+Limite mínimo para campos obrigatórios (ex: nome da tarefa não pode ficar vazio).
+
+Validação dos formatos de data e dados pessoais.**
+
+🖥️ 14. Plataforma Alvo
+Será Web.
+
+🔒 15. Autenticação e Segurança
+**- Sistema com login por email e senha.
+
+Senhas armazenadas de forma segura.
+
+Controle de permissões para tarefas e compartilhamentos (leitura, escrita, total).**
+
+🗂️ 16. Armazenamento de Dados
+Informações dos clientes, salvas localmente em um banco de dados.
+
+🎨 17. Layout e Design Desejado
+**- Interface simples e funcional para terminal no momento.
+
+Foco em clareza e usabilidade, com mensagens diretas e amigáveis.
+
+Futuramente, vai ser adaptado para HTML e CSS.**
+
+🏆 18. Critérios de Sucesso
+**- Usuário consegue cadastrar, editar, buscar e excluir tarefas e eventos sem erros.
+
+Notificações funcionam corretamente para avisar das tarefas próximas.
+
+Dados persistem corretamente após o encerramento do programa.
+
+Permissões de compartilhamento são respeitadas.
+
+Sistema é estável, responsivo e de fácil uso para o público-alvo
 
 ## 💻 Requisitos front-end
 - 🧩 1.Responsividade
