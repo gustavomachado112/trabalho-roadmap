@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendas</title>
+  <link rel="stylesheet" href="agendas.css" />
+</head>
+<body>
+  <header>
+    <h1>Cadastro de Agendas</h1>
+  </header>
+
+  <main>
+    <form class="agenda-form">
+      <label for="usuario">Nome de Usuário:</label>
+      <input type="text" id="usuario" name="usuario" placeholder="" />
+
+      <label for="nomeAgenda">Nome da Agenda:</label>
+      <input type="text" id="nomeAgenda" name="nomeAgenda" placeholder="" />
+
+      <label for="descricao">Descrição:</label>
+      <textarea id="descricao" name="descricao" rows="4" placeholder=""></textarea>
+
+      <label for="tamanho">Tamanho da Agenda:</label>
+      <select id="tamanho" name="tamanho">
+        <option value="pequena">Pequena</option>
+        <option value="media">Média</option>
+        <option value="grande">Grande</option>
+      </select>
+
+      <button type="submit">Salvar Agenda</button>
+    </form>
+  </main>
+</body>
+</html>
