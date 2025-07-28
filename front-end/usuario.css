@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 0;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 30px 40px;
+  width: 420px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.profile-item label {
+  width: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ddd;
+  user-select: none;
+}
+
+.profile-item span {
+  flex: 1;
+  font-size: 16px;
+  user-select: none;
+}
+
+.btn-change {
+  background: #a37bfa;
+  border: none;
+  color: #fff;
+  padding: 6px 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-change:hover {
+  background: #764ba2;
+}
+
+
+.change-section {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  background: rgba(255,255,255,0.15);
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  width: 240px;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.change-section p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+
+
+.btn-yes, .btn-no {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-yes {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-no {
+  background: #f44336;
+  color: white;
+}
+
+
+.form-change {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  background: rgba(255,255,255,0.15);
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  width: 260px;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 11;
+}
+
+.form-change label {
+  color: #eee;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-change input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-change button {
+  background: #a37bfa;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.form-change button:hover {
+  background: #764ba2;
+}
+
+
+.profile-item:focus-within .change-section {
+  display: flex;
+}
+
+.btn-change:focus + .change-section,
+.btn-change:active + .change-section {
+  display: flex;
+}
