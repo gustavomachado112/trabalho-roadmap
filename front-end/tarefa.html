@@ -34,6 +34,20 @@
 
   <h2>Tarefas Salvas</h2>
   <div id="taskList"></div>
+
+
+  <div id="commentSection" style="display:none; margin-top: 30px;">
+    <h3>Comentários da Tarefa</h3>
+    <div id="selectedTaskName" style="font-weight:bold; margin-bottom: 10px;"></div>
+
+    <div id="commentsList" style="max-height: 200px; overflow-y: auto; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; color: #fff; margin-bottom: 15px;">
+    </div>
+
+    <form id="commentForm">
+      <textarea id="commentText" rows="3" placeholder="Escreva seu comentário..." required style="width:100%; padding:10px; border-radius:8px; border:none; resize:none;"></textarea>
+      <button type="submit" style="margin-top:10px; background:#a37bfa; color:#fff; border:none; padding:10px 15px; border-radius:8px; cursor:pointer;">Adicionar Comentário</button>
+    </form>
+  </div>
 </div>
 
 <script src="tarefas.js"></script>
