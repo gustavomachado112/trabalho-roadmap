@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agenda Inteligente - Nova Tarefa</title>
+<link rel="stylesheet" href="tarefas.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>Nova Tarefa</h1>
+  <form id="taskForm">
+    <div>
+      <label for="taskName">Nome da Tarefa</label>
+      <input type="text" id="taskName" name="taskName" required />
+    </div>
+    <div>
+      <label for="creationDate">Data de Criação</label>
+      <input type="text" id="creationDate" name="creationDate" required />
+    </div>
+    <div>
+      <label for="dueDate">Data Limite para Fazer</label>
+      <input type="text" id="dueDate" name="dueDate" required />
+    </div>
+    <div>
+      <label for="description">Descrição da Tarefa</label>
+      <textarea id="description" name="description" required></textarea>
+    </div>
+    <button type="submit">Salvar Tarefa</button>
+  </form>
+
+  <hr style="margin: 30px 0; border-color: #a37bfa;" />
+
+  <h2>Tarefas Salvas</h2>
+  <div id="taskList"></div>
+</div>
+
+<script src="tarefas.js"></script>
+</body>
+</html>
