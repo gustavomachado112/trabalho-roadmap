@@ -36,7 +36,7 @@
   <main>
     <div class="container">
       <h1>Nova Tarefa</h1>
-      <form id="taskForm" aria-label="Formulário de Nova Tarefa">
+      <form id="taskForm" aria-label="Formulário de Nova Tarefa" method="GET">
         <div>
           <label for="taskName">Nome da Tarefa</label>
           <input type="text" id="taskName" name="taskName" required aria-required="true" />
@@ -53,6 +53,20 @@
           <label for="description">Descrição da Tarefa</label>
           <textarea id="description" name="description" required aria-required="true"></textarea>
         </div>
+
+        
+        <div>
+          <label for="attachmentLink">Link do Anexo (imagem, PDF, etc)</label>
+          <input
+            type="url"
+            id="attachmentLink"
+            name="attachmentLink"
+            placeholder="Cole aqui a URL do anexo"
+            pattern="https?://.+"
+            title="Insira um URL válido começando com http:// ou https://"
+          />
+        </div>
+
         <button type="submit">Salvar Tarefa</button>
       </form>
 
@@ -60,6 +74,27 @@
 
       <h2>Tarefas Salvas</h2>
       <div id="taskList" class="taskList"></div>
+
+      <!-- Exibe o link do anexo, se existir na query string -->
+      <section class="anexos" aria-label="Anexos da Tarefa">
+        <h3>Anexos</h3>
+        <ul>
+          <!-- Aqui vai ser inserido o link do anexo via backend ou JS -->
+          <!-- No exemplo estático abaixo: -->
+          <!-- Se houver o parâmetro attachmentLink na URL, mostramos -->
+          <script>
+            // Apenas para demo - exibe link do anexo passado na URL (sem backend)
+            const params = new URLSearchParams(window.location.search);
+            const anexosUl = document.currentScript.parentElement.querySelector('ul');
+            const link = params.get('attachmentLink');
+            if(link){
+              const li = document.createElement('li');
+              li.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">📎 Ver anexo</a>`;
+              anexosUl.appendChild(li);
+            }
+          </script>
+        </ul>
+      </section>
 
       <div id="commentSection" style="display:none;">
         <h3>Comentários da Tarefa</h3>
