@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
+  <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+
   <div class="login-container">
     <h1>Agenda Inteligente</h1>
     <p class="subtitle">Organize sua rotina com praticidade</p>
@@ -25,5 +27,29 @@
       Não é cadastrado? <a href="cadastro.html">Cadastre-se aqui</a>
     </p>
   </div>
+
+  <script>
+    const btn = document.getElementById('modo-btn');
+    const body = document.body;
+
+    // Verifica se já tem tema salvo no localStorage
+    const temaSalvo = localStorage.getItem('tema') || 'light';
+    if (temaSalvo === 'dark') {
+      body.classList.add('dark-mode');
+      btn.textContent = '☀️';
+    }
+
+    btn.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        btn.textContent = '🌙';
+        localStorage.setItem('tema', 'light');
+      } else {
+        body.classList.add('dark-mode');
+        btn.textContent = '☀️';
+        localStorage.setItem('tema', 'dark');
+      }
+    });
+  </script>
 </body>
 </html>
