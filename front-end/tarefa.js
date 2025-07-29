@@ -1,3 +1,46 @@
+// Controle do dropdown de notificação
+const notificationBtn = document.getElementById('notificationBtn');
+const notificationDropdown = document.getElementById('notificationDropdown');
+
+notificationBtn.addEventListener('click', () => {
+  const isHidden = notificationDropdown.hasAttribute('hidden');
+  if (isHidden) {
+    notificationDropdown.removeAttribute('hidden');
+  } else {
+    notificationDropdown.setAttribute('hidden', '');
+  }
+});
+
+// Alternar modo claro / escuro
+const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+const body = document.body;
+
+function setTheme(theme) {
+  if (theme === 'dark') {
+    body.classList.add('dark-mode');
+    toggleThemeBtn.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.remove('dark-mode');
+    toggleThemeBtn.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+  }
+}
+
+// Verifica tema salvo
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+
+toggleThemeBtn.addEventListener('click', () => {
+  if (body.classList.contains('dark-mode')) {
+    setTheme('light');
+  } else {
+    setTheme('dark');
+  }
+});
+
+// Código antigo para gerenciamento de tarefas, comentários e localStorage
+
 const form = document.getElementById('taskForm');
 const taskList = document.getElementById('taskList');
 
