@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Agenda Inteligente - Nova Tarefa</title>
-<link rel="stylesheet" href="tarefas.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agenda Inteligente - Nova Tarefa</title>
+  <link rel="stylesheet" href="tarefas.css" />
 </head>
 <body>
 
 <div class="container">
   <h1>Nova Tarefa</h1>
-  <form id="taskForm">
+  <form id="taskForm" aria-label="Formulário de Nova Tarefa">
     <div>
       <label for="taskName">Nome da Tarefa</label>
-      <input type="text" id="taskName" name="taskName" required />
+      <input type="text" id="taskName" name="taskName" required aria-required="true" />
     </div>
     <div>
       <label for="creationDate">Data de Criação</label>
-      <input type="text" id="creationDate" name="creationDate" required />
+      <input type="date" id="creationDate" name="creationDate" required aria-required="true" />
     </div>
     <div>
       <label for="dueDate">Data Limite para Fazer</label>
-      <input type="text" id="dueDate" name="dueDate" required />
+      <input type="date" id="dueDate" name="dueDate" required aria-required="true" />
     </div>
     <div>
       <label for="description">Descrição da Tarefa</label>
-      <textarea id="description" name="description" required></textarea>
+      <textarea id="description" name="description" required aria-required="true"></textarea>
     </div>
     <button type="submit">Salvar Tarefa</button>
   </form>
 
-  <hr style="margin: 30px 0; border-color: #a37bfa;" />
+  <hr aria-hidden="true" />
 
   <h2>Tarefas Salvas</h2>
-  <div id="taskList"></div>
+  <div id="taskList" class="taskList"></div>
 
-
-  <div id="commentSection" style="display:none; margin-top: 30px;">
+  <div id="commentSection" style="display:none;">
     <h3>Comentários da Tarefa</h3>
-    <div id="selectedTaskName" style="font-weight:bold; margin-bottom: 10px;"></div>
+    <div id="selectedTaskName" class="selected-task-name"></div>
 
-    <div id="commentsList" style="max-height: 200px; overflow-y: auto; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; color: #fff; margin-bottom: 15px;">
-    </div>
+    <div id="commentsList" class="comments-box" role="region" aria-live="polite"></div>
 
-    <form id="commentForm">
-      <textarea id="commentText" rows="3" placeholder="Escreva seu comentário..." required style="width:100%; padding:10px; border-radius:8px; border:none; resize:none;"></textarea>
-      <button type="submit" style="margin-top:10px; background:#a37bfa; color:#fff; border:none; padding:10px 15px; border-radius:8px; cursor:pointer;">Adicionar Comentário</button>
+    <form id="commentForm" aria-label="Adicionar Comentário">
+      <textarea id="commentText" rows="3" placeholder="Escreva seu comentário..." required></textarea>
+      <button type="submit">Adicionar Comentário</button>
     </form>
   </div>
 </div>
