@@ -2,42 +2,43 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Página do Usuário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Usuário</title>
   <link rel="stylesheet" href="usuario.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Perfil do Usuário</h1>
+  <main class="container" role="main" aria-labelledby="titulo">
+    <h1 id="titulo">Perfil do Usuário</h1>
 
-    <div class="info-bloco">
+    <section class="info-bloco">
       <p><strong>Nome:</strong> [informação oculta]</p>
-      <button class="btn-alterar">Alterar Nome</button>
-      <input type="text" placeholder="Novo nome" class="input-camuflado">
-    </div>
+      <button class="btn-alterar" aria-label="Alterar Nome">Alterar Nome</button>
+      <input type="text" placeholder="Novo nome" class="input-camuflado" aria-label="Novo nome">
+    </section>
 
-    <div class="info-bloco">
+    <section class="info-bloco">
       <p><strong>E-mail:</strong> ********@gmail.com</p>
-      <button class="btn-alterar">Alterar E-mail</button>
-      <input type="email" placeholder="Novo e-mail" class="input-camuflado">
-    </div>
+      <button class="btn-alterar" aria-label="Alterar E-mail">Alterar E-mail</button>
+      <input type="email" placeholder="Novo e-mail" class="input-camuflado" aria-label="Novo e-mail">
+    </section>
 
-    <div class="info-bloco">
+    <section class="info-bloco">
       <p><strong>Senha:</strong> [informação oculta]</p>
-      <button class="btn-alterar">Alterar Senha</button>
-      <input type="password" placeholder="Nova senha" class="input-camuflado">
-    </div>
+      <button class="btn-alterar" aria-label="Alterar Senha">Alterar Senha</button>
+      <input type="password" placeholder="Nova senha" class="input-camuflado" aria-label="Nova senha">
+    </section>
 
-    <div class="info-bloco">
+    <section class="info-bloco">
       <p><strong>Telefone:</strong> [informação oculta]</p>
-      <button class="btn-alterar">Alterar Telefone</button>
-      <input type="tel" placeholder="Novo telefone" class="input-camuflado">
-    </div>
+      <button class="btn-alterar" aria-label="Alterar Telefone">Alterar Telefone</button>
+      <input type="tel" placeholder="Novo telefone" class="input-camuflado" aria-label="Novo telefone">
+    </section>
 
-    <div class="info-bloco">
+    <section class="info-bloco">
       <p><strong>CPF:</strong> [informação oculta]</p>
-      <button class="btn-alterar">Alterar CPF</button>
-      <input type="text" placeholder="Novo CPF" class="input-camuflado">
-    </div>
-  </div>
+      <button class="btn-alterar" aria-label="Alterar CPF">Alterar CPF</button>
+      <input type="text" placeholder="Novo CPF" class="input-camuflado" aria-label="Novo CPF">
+    </section>
+  </main>
 </body>
 </html>
