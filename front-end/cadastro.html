@@ -1,32 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro | Agenda Inteligente</title>
-  <link rel="stylesheet" href="cadastro.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="cadastro.css" />
 </head>
 <body>
-  <main class="container" role="main" aria-labelledby="titulo-cadastro">
-    <h2 id="titulo-cadastro">Cadastro - Agenda Inteligente</h2>
-    <form action="/cadastro" method="POST">
-      <label for="nome">Nome do Usuário:</label>
-      <input type="text" id="nome" name="nome" required aria-required="true">
+  <header class="header">
+    <h1>Agenda Inteligente</h1>
+    <nav class="navbar">
+      <a href="index.html">Login</a>
+      <a href="cadastro.html">Cadastro</a>
+      <a href="inicio.html">Início</a>
+    </nav>
+    <button id="toggle-theme" aria-label="Alternar modo claro/escuro">🌓</button>
+  </header>
+
+  <main class="cadastro-container">
+    <form class="cadastro-form" action="tarefas.html" method="post">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
 
       <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" required aria-required="true">
+      <input type="email" id="email" name="email" required>
 
       <label for="senha">Senha:</label>
-      <input type="password" id="senha" name="senha" required aria-required="true">
+      <input type="password" id="senha" name="senha" required>
 
       <label for="cpf">CPF:</label>
-      <input type="text" id="cpf" name="cpf" required aria-required="true">
+      <input type="text" id="cpf" name="cpf" required>
 
       <label for="telefone">Telefone:</label>
-      <input type="tel" id="telefone" name="telefone" required aria-required="true">
+      <input type="tel" id="telefone" name="telefone" required>
 
-      <button type="submit" aria-label="Enviar cadastro">Cadastrar</button>
+      <button type="submit" aria-label="Enviar cadastro">Enviar Cadastro</button>
     </form>
   </main>
+
+  <script>
+    const toggle = document.getElementById("toggle-theme");
+    toggle.addEventListener("click", () => {
+      const html = document.documentElement;
+      const atual = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", atual === "dark" ? "light" : "dark");
+    });
+  </script>
 </body>
 </html>
