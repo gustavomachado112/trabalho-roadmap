@@ -56,6 +56,19 @@
     </div>
   </main>
 
-  <script src="evento.js"></script>
+  <script>
+    // Alternar dark mode / light mode
+    const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+
+    toggleThemeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      // Atualizar ícone do botão
+      if(document.body.classList.contains('dark-mode')) {
+        toggleThemeBtn.textContent = '☀️'; // Sol para modo claro
+      } else {
+        toggleThemeBtn.textContent = '🌙'; // Lua para modo escuro
+      }
+    });
+  </script>
 </body>
 </html>
