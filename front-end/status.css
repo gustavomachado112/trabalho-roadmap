@@ -1,25 +1,96 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #000000;
+  --header-bg: #00796b;
+  --nav-link-color: white;
+  --nav-link-hover: #48a999;
+  --card-pendentes-bg: #f44336;
+  --card-andamento-bg: #ff9800;
+  --card-concluidas-bg: #4caf50;
+  --alerta-ativo-bg: #ffeb3b;
+  --alerta-ativo-color: #333;
+  --alerta-ok-bg: #c8e6c9;
+  --alerta-ok-color: #2e7d32;
+  --main-bg: white;
 }
 
-header {
-  background-color: #00796b;
-  color: white;
-  padding: 20px;
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #eee;
+  --header-bg: #1f1f1f;
+  --nav-link-color: #ccc;
+  --nav-link-hover: #8ab4f8;
+  --card-pendentes-bg: #b71c1c;
+  --card-andamento-bg: #ef6c00;
+  --card-concluidas-bg: #2e7d32;
+  --alerta-ativo-bg: #fbc02d;
+  --alerta-ativo-color: #222;
+  --alerta-ok-bg: #388e3c;
+  --alerta-ok-color: #c8facc;
+  --main-bg: #222;
+}
+
+header nav {
+  background-color: var(--header-bg);
+  color: var(--nav-link-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover,
+nav ul li a[aria-current="page"] {
+  color: var(--nav-link-hover);
+  text-decoration: underline;
+}
+
+#modo-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--nav-link-color);
 }
 
 main {
   padding: 20px;
   max-width: 900px;
   margin: auto;
+  background-color: var(--main-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 h2 {
-  color: #333;
+  color: var(--text-color);
 }
 
 .cards {
@@ -38,20 +109,20 @@ h2 {
 }
 
 .pendentes {
-  background-color: #f44336;
+  background-color: var(--card-pendentes-bg);
 }
 
 .andamento {
-  background-color: #ff9800;
+  background-color: var(--card-andamento-bg);
 }
 
 .concluidas {
-  background-color: #4caf50;
+  background-color: var(--card-concluidas-bg);
 }
 
 .eventos, .alertas {
   margin-top: 30px;
-  background-color: white;
+  background-color: var(--main-bg);
   padding: 20px;
   border-radius: 10px;
 }
@@ -67,11 +138,11 @@ ul {
 }
 
 .alerta.ativo {
-  background-color: #ffeb3b;
-  color: #333;
+  background-color: var(--alerta-ativo-bg);
+  color: var(--alerta-ativo-color);
 }
 
 .alerta.ok {
-  background-color: #c8e6c9;
-  color: #2e7d32;
+  background-color: var(--alerta-ok-bg);
+  color: var(--alerta-ok-color);
 }
