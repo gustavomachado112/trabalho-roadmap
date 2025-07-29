@@ -7,7 +7,25 @@
   <link rel="stylesheet" href="prioridades.css">
 </head>
 <body>
-  <div class="container">
+  <header class="top-bar">
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tarefas.html">Tarefas</a></li>
+        <li><a href="prioridades.html" class="active">Prioridades</a></li>
+        <li><a href="calendario.html">Calendário</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+    <div class="actions">
+      <button id="notificacoes-btn" aria-label="Ver notificações">🔔</button>
+      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+    </div>
+  </header>
+
+  <div id="notificacoes" class="notificacoes">Você não tem notificações.</div>
+
+  <main class="container">
     <h1>Minhas Prioridades</h1>
 
     <form id="form-prioridade">
@@ -35,8 +53,9 @@
     </form>
 
     <ul id="lista-prioridades"></ul>
-  </div>
+  </main>
 
-  <script src="prioridades.js"></script>
+<script src="prioridades.js"></script>
+
 </body>
 </html>
