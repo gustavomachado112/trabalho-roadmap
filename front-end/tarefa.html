@@ -79,19 +79,9 @@
       <section class="anexos" aria-label="Anexos da Tarefa">
         <h3>Anexos</h3>
         <ul>
-          <!-- Aqui vai ser inserido o link do anexo via backend ou JS -->
-          <!-- No exemplo estático abaixo: -->
-          <!-- Se houver o parâmetro attachmentLink na URL, mostramos -->
           <script>
-            // Apenas para demo - exibe link do anexo passado na URL (sem backend)
-            const params = new URLSearchParams(window.location.search);
-            const anexosUl = document.currentScript.parentElement.querySelector('ul');
-            const link = params.get('attachmentLink');
-            if(link){
-              const li = document.createElement('li');
-              li.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">📎 Ver anexo</a>`;
-              anexosUl.appendChild(li);
-            }
+      
+           
           </script>
         </ul>
       </section>
