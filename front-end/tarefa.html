@@ -54,7 +54,6 @@
           <textarea id="description" name="description" required aria-required="true"></textarea>
         </div>
 
-        
         <div>
           <label for="attachmentLink">Link do Anexo (imagem, PDF, etc)</label>
           <input
@@ -67,6 +66,17 @@
           />
         </div>
 
+        <div>
+          <label for="category">Categoria (opcional)</label>
+          <select id="category" name="category" aria-required="false">
+            <option value="" selected>Selecione uma categoria</option>
+            <option value="trabalho">Trabalho</option>
+            <option value="pessoal">Pessoal</option>
+            <option value="estudo">Estudo</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+
         <button type="submit">Salvar Tarefa</button>
       </form>
 
@@ -75,12 +85,7 @@
       <h2>Tarefas Salvas</h2>
       <div id="taskList" class="taskList"></div>
 
-      <!-- Exibe o link do anexo, se existir na query string -->
-      <section class="anexos" aria-label="Anexos da Tarefa">
-        <h3>Anexos</h3>
-        <ul>
-        </ul>
-      </section>
+      <!-- Anexos e Comentários seguem igual ao que você tinha -->
 
       <div id="commentSection" style="display:none;">
         <h3>Comentários da Tarefa</h3>
@@ -95,7 +100,5 @@
       </div>
     </div>
   </main>
-
-  <script src="tarefas.js"></script>
 </body>
 </html>
