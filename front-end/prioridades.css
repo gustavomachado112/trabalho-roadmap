@@ -88,3 +88,77 @@ button:hover {
 .urgencia-Baixa {
   color: #7fff7f;
 }
+.top-bar {
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  margin-bottom: 30px;
+  border-radius: 0 0 10px 10px;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+#modo-btn, #notificacoes-btn {
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#notificacoes {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  margin: 0 20px 20px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+}
+
+#notificacoes.visivel {
+  display: block;
+}
+
+body.dark-mode {
+  background: linear-gradient(to right, #1a1a1a, #333);
+  color: #fff;
+}
+
+body.dark-mode .container {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+body.dark-mode button {
+  background-color: #4c3a83;
+}
