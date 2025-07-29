@@ -65,7 +65,7 @@ Pessoas adultas que querem organizar suas tarefas diárias.
 - **Validação dos formatos de data e dados pessoais.**
 
 ## 🖥️ 14. Plataforma Alvo
-- **Web**
+- **Web e mobile**
 
 ## 🔒 15. Autenticação e Segurança
 - **Sistema com login por email e senha.**  
