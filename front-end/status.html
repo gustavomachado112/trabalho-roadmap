@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status Geral</title>
+  <link rel="stylesheet" href="status.css">
+</head>
+<body>
+  <header>
+    <h1>Status da Agenda</h1>
+  </header>
+
+  <main>
+    <section class="resumo">
+      <h2>Resumo de Tarefas</h2>
+      <div class="cards">
+        <div class="card pendentes">
+          <h3>Pendentes</h3>
+          <p id="pendentes">5</p>
+        </div>
+        <div class="card andamento">
+          <h3>Em Andamento</h3>
+          <p id="andamento">3</p>
+        </div>
+        <div class="card concluidas">
+          <h3>Concluídas</h3>
+          <p id="concluidas">12</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="eventos">
+      <h2>Próximos Eventos</h2>
+      <ul id="lista-eventos">
+        <li> Reunião com equipe - 30/07/2025</li>
+        <li> Apresentação de projeto - 02/08/2025</li>
+        <li> Revisão semanal - 04/08/2025</li>
+      </ul>
+    </section>
+
+    <section class="alertas">
+      <h2>Alertas</h2>
+      <div class="alerta ativo">Você possui tarefas pendentes há mais de 3 dias.</div>
+      <div class="alerta ok">Todas as tarefas de hoje estão dentro do prazo!</div>
+    </section>
+  </main>
+
+  <script>
+    // Aqui você pode, futuramente, buscar os dados dinamicamente
+    console.log("Página de status carregada.");
+  </script>
+</body>
+</html>
