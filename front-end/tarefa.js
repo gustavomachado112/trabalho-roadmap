@@ -1,180 +1,96 @@
-// Controle do dropdown de notificação
-const notificationBtn = document.getElementById('notificationBtn');
-const notificationDropdown = document.getElementById('notificationDropdown');
+// Notificações
+notificationBtn.onclick = () =>
+  notificationDropdown.toggleAttribute('hidden');
 
-notificationBtn.addEventListener('click', () => {
-  const isHidden = notificationDropdown.hasAttribute('hidden');
-  if (isHidden) {
-    notificationDropdown.removeAttribute('hidden');
-  } else {
-    notificationDropdown.setAttribute('hidden', '');
-  }
-});
+// Tema claro/escuro
+const setTheme = theme => {
+  document.body.classList.toggle('dark-mode', theme === 'dark');
+  toggleThemeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', theme);
+};
+setTheme(localStorage.getItem('theme') || 'light');
+toggleThemeBtn.onclick = () =>
+  setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
 
-// Alternar modo claro / escuro
-const toggleThemeBtn = document.getElementById('toggleThemeBtn');
-const body = document.body;
+// Tarefas e comentários
+const $ = id => document.getElementById(id);
+const form = $('taskForm'), list = $('taskList'), section = $('commentSection');
+const nameDisplay = $('selectedTaskName'), commentsBox = $('commentsList'), commentForm = $('commentForm');
+let tasks = JSON.parse(localStorage.getItem('tarefas')) || [], current = null;
 
-function setTheme(theme) {
-  if (theme === 'dark') {
-    body.classList.add('dark-mode');
-    toggleThemeBtn.textContent = '☀️';
-    localStorage.setItem('theme', 'dark');
-  } else {
-    body.classList.remove('dark-mode');
-    toggleThemeBtn.textContent = '🌙';
-    localStorage.setItem('theme', 'light');
-  }
-}
-
-// Verifica tema salvo
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
-
-toggleThemeBtn.addEventListener('click', () => {
-  if (body.classList.contains('dark-mode')) {
-    setTheme('light');
-  } else {
-    setTheme('dark');
-  }
-});
-
-// Código antigo para gerenciamento de tarefas, comentários e localStorage
-
-const form = document.getElementById('taskForm');
-const taskList = document.getElementById('taskList');
-
-const commentSection = document.getElementById('commentSection');
-const selectedTaskName = document.getElementById('selectedTaskName');
-const commentsList = document.getElementById('commentsList');
-const commentForm = document.getElementById('commentForm');
-const commentText = document.getElementById('commentText');
-
-let tasks = JSON.parse(localStorage.getItem('tarefas')) || [];
-let selectedTaskIndex = null;
-
-function loadTasks() {
-  tasks = JSON.parse(localStorage.getItem('tarefas')) || [];
-  taskList.innerHTML = '';
-
-  if (tasks.length === 0) {
-    taskList.innerHTML = '<p style="color:#ccc; text-align:center;">Nenhuma tarefa salva.</p>';
-    commentSection.style.display = 'none';
-    return;
-  }
-
-  tasks.forEach((task, index) => {
-    const div = document.createElement('div');
-    div.classList.add('task-item');
-    div.innerHTML = `
-      <h3>${task.nome}</h3>
-      <p><strong>Data de Criação:</strong> ${task.criacao}</p>
-      <p><strong>Data Limite:</strong> ${task.limite}</p>
-      <p><strong>Descrição:</strong> ${task.descricao}</p>
-      <button onclick="selectTask(${index})" style="margin-top:10px; margin-right:10px; padding:6px 12px; background:#4caf50; color:#fff; border:none; border-radius:6px; cursor:pointer;">Comentários</button>
-      <button onclick="removeTask(${index})" style="margin-top:10px; padding:6px 12px; background:#764ba2; color:#fff; border:none; border-radius:6px; cursor:pointer;">Excluir</button>
-    `;
-    taskList.appendChild(div);
-  });
-  commentSection.style.display = 'none'; // oculta comentários ao recarregar lista
-}
-
-// Seleciona uma tarefa para ver/gerenciar comentários
-function selectTask(index) {
-  selectedTaskIndex = index;
-  const task = tasks[index];
-  selectedTaskName.textContent = `Comentários da tarefa: ${task.nome}`;
-  loadComments();
-  commentSection.style.display = 'block';
-  commentText.value = '';
-  commentText.focus();
-}
-
-// Carrega comentários da tarefa selecionada
-function loadComments() {
-  const task = tasks[selectedTaskIndex];
-  commentsList.innerHTML = '';
-
-  if (!task.comentarios || task.comentarios.length === 0) {
-    commentsList.innerHTML = '<p style="color:#ccc; text-align:center;">Nenhum comentário ainda.</p>';
-    return;
-  }
-
-  task.comentarios.forEach(c => {
-    const p = document.createElement('p');
-    p.innerHTML = `<span class="comment-date">${c.data}</span><br>${escapeHtml(c.texto)}`;
-    commentsList.appendChild(p);
-  });
-}
-
-// Função para escapar HTML nos comentários (evita injeção)
-function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, function(m) {
-    return ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
-    })[m];
-  });
-}
-
-function removeTask(index) {
-  tasks.splice(index, 1);
+const saveTasks = () =>
   localStorage.setItem('tarefas', JSON.stringify(tasks));
-  loadTasks();
-  selectedTaskIndex = null;
-  commentSection.style.display = 'none';
-}
 
-form.addEventListener('submit', e => {
+const renderTasks = () => {
+  list.innerHTML = tasks.length ? '' : '<p style="color:#ccc; text-align:center;">Nenhuma tarefa salva.</p>';
+  tasks.forEach((t, i) => {
+    const el = document.createElement('div');
+    el.className = 'task-item';
+    el.innerHTML = `
+      <h3>${t.nome}</h3>
+      <p><strong>Data de Criação:</strong> ${t.criacao}</p>
+      <p><strong>Data Limite:</strong> ${t.limite}</p>
+      <p><strong>Descrição:</strong> ${t.descricao}</p>
+      <button onclick="select(${i})">Comentários</button>
+      <button onclick="remove(${i})">Excluir</button>`;
+    list.appendChild(el);
+  });
+  section.style.display = 'none';
+};
+
+const escape = s =>
+  s.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+
+window.select = i => {
+  current = i;
+  nameDisplay.textContent = `Comentários da tarefa: ${tasks[i].nome}`;
+  renderComments();
+  section.style.display = 'block';
+  $('commentText').value = '';
+};
+
+const renderComments = () => {
+  const c = tasks[current].comentarios || [];
+  commentsBox.innerHTML = c.length
+    ? c.map(e => `<p><span class="comment-date">${e.data}</span><br>${escape(e.texto)}</p>`).join('')
+    : '<p style="color:#ccc; text-align:center;">Nenhum comentário ainda.</p>';
+};
+
+window.remove = i => {
+  tasks.splice(i, 1);
+  saveTasks();
+  renderTasks();
+};
+
+form.onsubmit = e => {
   e.preventDefault();
-
-  const novaTarefa = {
+  const t = {
     nome: form.taskName.value.trim(),
-    criacao: form.creationDate.value.trim(),
-    limite: form.dueDate.value.trim(),
+    criacao: form.creationDate.value,
+    limite: form.dueDate.value,
     descricao: form.description.value.trim(),
     comentarios: []
   };
-
-  if (!novaTarefa.nome || !novaTarefa.criacao || !novaTarefa.limite || !novaTarefa.descricao) {
-    alert('Por favor, preencha todos os campos!');
-    return;
-  }
-
-  tasks.push(novaTarefa);
-  localStorage.setItem('tarefas', JSON.stringify(tasks));
-
+  if (Object.values(t).some(v => !v)) return alert('Preencha todos os campos!');
+  tasks.push(t);
+  saveTasks();
   form.reset();
-  loadTasks();
-});
+  renderTasks();
+};
 
-// Adicionar comentário
-commentForm.addEventListener('submit', e => {
+commentForm.onsubmit = e => {
   e.preventDefault();
-
-  if (selectedTaskIndex === null) return alert('Selecione uma tarefa primeiro!');
-
-  const texto = commentText.value.trim();
+  if (current === null) return alert('Selecione uma tarefa!');
+  const texto = $('commentText').value.trim();
   if (!texto) return;
-
-  const dataAtual = new Date();
-  const dataFormatada = dataAtual.toLocaleString('pt-BR', {
+  const data = new Date().toLocaleString('pt-BR', {
     day: '2-digit', month: '2-digit', year: 'numeric',
     hour: '2-digit', minute: '2-digit'
   });
+  tasks[current].comentarios.push({ texto, data });
+  saveTasks();
+  $('commentText').value = '';
+  renderComments();
+};
 
-  const novoComentario = {
-    texto: texto,
-    data: dataFormatada
-  };
-
-  tasks[selectedTaskIndex].comentarios.push(novoComentario);
-  localStorage.setItem('tarefas', JSON.stringify(tasks));
-  commentText.value = '';
-  loadComments();
-});
-
-loadTasks();
+renderTasks();
