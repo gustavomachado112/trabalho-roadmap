@@ -2,36 +2,59 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agendas</title>
-  <link rel="stylesheet" href="agenda.css" />
+  <link rel="stylesheet" href="agendas.css" />
 </head>
-<body>
+<body class="light-mode">
   <header>
-    <h1>Cadastro de Agendas</h1>
+    <nav>
+      <h1>Agenda Inteligente</h1>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tarefas.html">Tarefas</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="agendas.html">Agendas</a></li>
+        <li><a href="recorrencia.html">Recorrência</a></li>
+        <li><a href="status.html">Status</a></li>
+      </ul>
+      <button id="modo-btn">🌙</button>
+    </nav>
   </header>
 
   <main>
-    <form class="agenda-form">
-      <label for="usuario">Nome de Usuário:</label>
-      <input type="text" id="usuario" name="usuario" placeholder="Digite seu nome de usuário" />
+    <section class="agenda-dados">
+      <h2>Minha Agenda</h2>
+      <p><strong>Usuário:</strong> João da Silva</p>
+      <p><strong>Nome da Agenda:</strong> Compromissos Pessoais</p>
+      <p><strong>Descrição:</strong> Tarefas do dia a dia</p>
+      <p><strong>Tamanho:</strong> Média</p>
+    </section>
 
-      <label for="nomeAgenda">Nome da Agenda:</label>
-      <input type="text" id="nomeAgenda" name="nomeAgenda" placeholder="Digite o nome da agenda" />
+    <section class="compartilhamento">
+      <h2>Compartilhamentos</h2>
+      <form id="form-compartilhamento">
+        <input type="text" placeholder="Usuário" required />
+        <input type="text" placeholder="Tarefa compartilhada" required />
+        <select>
+          <option value="leitura">Leitura</option>
+          <option value="edição">Edição</option>
+        </select>
+        <button type="submit">Compartilhar</button>
+      </form>
+    </section>
 
-      <label for="descricao">Descrição:</label>
-      <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva brevemente a agenda"></textarea>
-
-      <label for="tamanho">Tamanho da Agenda:</label>
-      <select id="tamanho" name="tamanho">
-        <option value="pequena">Pequena</option>
-        <option value="media">Média</option>
-        <option value="grande">Grande</option>
-      </select>
-
-      <button type="submit">Salvar Agenda</button>
-    </form>
+    <section class="calendario">
+      <h2>Calendário Integrado</h2>
+      <form id="form-calendario">
+        <input type="text" placeholder="Nome do calendário" required />
+        <input type="text" placeholder="Descrição" />
+        <input type="url" placeholder="Link do calendário" />
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
   </main>
+
+  <script src="agendas.js"></script>
 </body>
 </html>
-
