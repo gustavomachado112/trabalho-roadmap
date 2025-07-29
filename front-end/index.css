@@ -1,11 +1,13 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f1f1f1;
+  color: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .login-container {
@@ -15,6 +17,7 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 350px;
   text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
@@ -84,36 +87,54 @@ button:focus {
   text-decoration: underline;
 }
 
-/* Dark mode automático */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-  }
+#modo-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: #3366cc;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
 
-  .login-container {
-    background-color: #1e1e1e;
-    color: #f0f0f0;
-  }
+#modo-btn:hover {
+  background-color: #254d99;
+}
 
-  input {
-    background-color: #2a2a2a;
-    color: #f0f0f0;
-    border: 1px solid #444;
-  }
+/* Dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
 
-  input::placeholder {
-    color: #aaa;
-  }
+body.dark-mode .login-container {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
 
-  button {
-    background-color: #5588ff;
-  }
+body.dark-mode input {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
 
-  button:hover {
-    background-color: #3366cc;
-  }
+body.dark-mode input::placeholder {
+  color: #aaa;
+}
 
-  .cadastro-texto a {
-    color: #88aaff;
-  }
+body.dark-mode button {
+  background-color: #5588ff;
+}
+
+body.dark-mode button:hover {
+  background-color: #3366cc;
+}
+
+body.dark-mode .cadastro-texto a {
+  color: #88aaff;
 }
