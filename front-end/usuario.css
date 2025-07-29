@@ -1,22 +1,56 @@
+:root {
+  --cor-fundo: #667eea;
+  --cor-fundo-secundaria: #764ba2;
+  --cor-container: rgba(255, 255, 255, 0.1);
+  --cor-texto: #ffffff;
+  --cor-botao: #a37bfa;
+  --cor-botao-hover: #764ba2;
+  --cor-sucesso: #4caf50;
+  --cor-erro: #f44336;
+
+  --cor-bg-dark: #121212;
+  --cor-txt-dark: #e0e0e0;
+  --cor-input-dark: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #2b2b2b, #1a1a1a);
+    color: var(--cor-txt-dark);
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+  }
+
+  input {
+    background-color: var(--cor-input-dark);
+    color: var(--cor-txt-dark);
+    border: 1px solid #444;
+  }
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--cor-fundo), var(--cor-fundo-secundaria));
   min-height: 100vh;
   margin: 0;
-  padding: 40px 0;
-  color: #fff;
+  padding: 40px 16px;
+  color: var(--cor-texto);
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
 .container {
-  background: rgba(255,255,255,0.1);
+  background: var(--cor-container);
   backdrop-filter: blur(15px);
   border-radius: 16px;
   padding: 30px 40px;
-  width: 420px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -26,137 +60,42 @@ h1 {
   margin-bottom: 30px;
 }
 
-.profile-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  position: relative;
+.info-bloco {
+  margin-bottom: 24px;
 }
 
-.profile-item label {
-  width: 100px;
-  font-weight: 600;
-  font-size: 15px;
-  color: #ddd;
-  user-select: none;
-}
-
-.profile-item span {
-  flex: 1;
+.info-bloco p {
   font-size: 16px;
-  user-select: none;
+  margin: 0 0 8px;
 }
 
-.btn-change {
-  background: #a37bfa;
+.btn-alterar {
+  background: var(--cor-botao);
   border: none;
   color: #fff;
-  padding: 6px 14px;
-  font-weight: 600;
+  padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
-  user-select: none;
+  font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
-.btn-change:hover {
-  background: #764ba2;
+.btn-alterar:hover {
+  background-color: var(--cor-botao-hover);
 }
 
-
-.change-section {
-  position: absolute;
-  top: 38px;
-  right: 0;
-  background: rgba(255,255,255,0.15);
-  padding: 10px 14px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  width: 240px;
-  z-index: 10;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.change-section p {
-  margin: 0;
-  font-weight: 600;
-  font-size: 14px;
-  color: #fff;
-}
-
-
-.btn-yes, .btn-no {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn-yes {
-  background: #4caf50;
-  color: white;
-}
-
-.btn-no {
-  background: #f44336;
-  color: white;
-}
-
-
-.form-change {
-  position: absolute;
-  top: 38px;
-  right: 0;
-  background: rgba(255,255,255,0.15);
-  padding: 14px 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  width: 260px;
-  display: none;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 11;
-}
-
-.form-change label {
-  color: #eee;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.form-change input {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: none;
-  font-size: 15px;
-  outline: none;
-}
-
-.form-change button {
-  background: #a37bfa;
-  border: none;
+.input-camuflado {
+  margin-top: 10px;
   padding: 10px;
-  color: white;
-  font-weight: 700;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
+  border-radius: 6px;
+  border: none;
+  width: 100%;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: box-shadow 0.2s ease;
 }
 
-.form-change button:hover {
-  background: #764ba2;
-}
-
-
-.profile-item:focus-within .change-section {
-  display: flex;
-}
-
-.btn-change:focus + .change-section,
-.btn-change:active + .change-section {
-  display: flex;
+.input-camuflado:focus {
+  box-shadow: 0 0 0 3px rgba(163, 123, 250, 0.4);
 }
