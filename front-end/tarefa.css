@@ -1,11 +1,11 @@
-/* RESET */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* BODY */
+
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #667eea, #764ba2);
@@ -16,7 +16,7 @@ body {
   color: #fff;
 }
 
-/* CONTAINER */
+
 .container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
@@ -27,7 +27,7 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* TÍTULOS */
+
 h1, h2, h3 {
   text-align: center;
   margin-bottom: 20px;
@@ -47,7 +47,7 @@ h3 {
   font-size: 18px;
 }
 
-/* FORMULÁRIO */
+
 form {
   display: flex;
   flex-direction: column;
@@ -83,7 +83,7 @@ textarea {
   min-height: 80px;
 }
 
-/* BOTÃO */
+
 button {
   background: #a37bfa;
   color: white;
@@ -100,7 +100,7 @@ button:hover {
   background: #764ba2;
 }
 
-/* LISTA DE TAREFAS */
+
 .taskList {
   margin-top: 20px;
   max-height: 300px;
@@ -126,7 +126,7 @@ button:hover {
   margin-bottom: 6px;
 }
 
-/* COMENTÁRIOS */
+
 #commentSection {
   margin-top: 30px;
 }
@@ -162,7 +162,7 @@ button:hover {
   margin-bottom: 4px;
 }
 
-/* RESPONSIVIDADE */
+
 @media (max-width: 480px) {
   .container {
     padding: 20px;
