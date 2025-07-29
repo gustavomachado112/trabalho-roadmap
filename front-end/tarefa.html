@@ -7,47 +7,117 @@
   <link rel="stylesheet" href="tarefas.css" />
 </head>
 <body>
+  <header class="topbar">
+    <nav>
+      <ul class="menu">
+        <li><a href="agendas.html">Agenda</a></li>
+        <li><a href="prioridades.html">Prioridades</a></li>
+        <li><a href="recorrencia.html">Recorrência</a></li>
+        <li><a href="status.html">Status</a></li>
+        <li><a href="usuario.html">Usuário</a></li>
+        <li><a href="tarefas.html" class="active">Tarefas</a></li>
+      </ul>
 
-<div class="container">
-  <h1>Nova Tarefa</h1>
-  <form id="taskForm" aria-label="Formulário de Nova Tarefa">
-    <div>
-      <label for="taskName">Nome da Tarefa</label>
-      <input type="text" id="taskName" name="taskName" required aria-required="true" />
+      <div class="actions">
+        <button id="notificationBtn" aria-label="Mostrar notificações" title="Notificações">
+          🔔
+        </button>
+        <button id="toggleThemeBtn" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro">
+          🌙
+        </button>
+      </div>
+    </nav>
+
+    <div id="notificationDropdown" class="dropdown" aria-live="polite" role="alert" hidden>
+      No momento, você não tem nenhuma notificação.
     </div>
-    <div>
-      <label for="creationDate">Data de Criação</label>
-      <input type="date" id="creationDate" name="creationDate" required aria-required="true" />
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Nova Tarefa</h1>
+      <form id="taskForm" aria-label="Formulário de Nova Tarefa">
+        <div>
+          <label for="taskName">Nome da Tarefa</label>
+          <input type="text" id="taskName" name="taskName" required aria-required="true" />
+        </div>
+        <div>
+          <label for="creationDate">Data de Criação</label>
+          <input type="date" id="creationDate" name="creationDate" required aria-required="true" />
+        </div>
+        <div>
+          <label for="dueDate">Data Limite para Fazer</label>
+          <input type="date" id="dueDate" name="dueDate" required aria-required="true" />
+        </div>
+        <div>
+          <label for="description">Descrição da Tarefa</label>
+          <textarea id="description" name="description" required aria-required="true"></textarea>
+        </div>
+        <button type="submit">Salvar Tarefa</button>
+      </form>
+
+      <hr aria-hidden="true" />
+
+      <h2>Tarefas Salvas</h2>
+      <div id="taskList" class="taskList"></div>
+
+      <div id="commentSection" style="display:none;">
+        <h3>Comentários da Tarefa</h3>
+        <div id="selectedTaskName" class="selected-task-name"></div>
+
+        <div id="commentsList" class="comments-box" role="region" aria-live="polite"></div>
+
+        <form id="commentForm" aria-label="Adicionar Comentário">
+          <textarea id="commentText" rows="3" placeholder="Escreva seu comentário..." required></textarea>
+          <button type="submit">Adicionar Comentário</button>
+        </form>
+      </div>
     </div>
-    <div>
-      <label for="dueDate">Data Limite para Fazer</label>
-      <input type="date" id="dueDate" name="dueDate" required aria-required="true" />
-    </div>
-    <div>
-      <label for="description">Descrição da Tarefa</label>
-      <textarea id="description" name="description" required aria-required="true"></textarea>
-    </div>
-    <button type="submit">Salvar Tarefa</button>
-  </form>
+  </main>
 
-  <hr aria-hidden="true" />
+  <script>
+    // Controle do dropdown de notificação
+    const notificationBtn = document.getElementById('notificationBtn');
+    const notificationDropdown = document.getElementById('notificationDropdown');
 
-  <h2>Tarefas Salvas</h2>
-  <div id="taskList" class="taskList"></div>
+    notificationBtn.addEventListener('click', () => {
+      const isHidden = notificationDropdown.hasAttribute('hidden');
+      if (isHidden) {
+        notificationDropdown.removeAttribute('hidden');
+      } else {
+        notificationDropdown.setAttribute('hidden', '');
+      }
+    });
 
-  <div id="commentSection" style="display:none;">
-    <h3>Comentários da Tarefa</h3>
-    <div id="selectedTaskName" class="selected-task-name"></div>
+    // Alternar modo claro / escuro
+    const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+    const body = document.body;
 
-    <div id="commentsList" class="comments-box" role="region" aria-live="polite"></div>
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        toggleThemeBtn.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark-mode');
+        toggleThemeBtn.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    }
 
-    <form id="commentForm" aria-label="Adicionar Comentário">
-      <textarea id="commentText" rows="3" placeholder="Escreva seu comentário..." required></textarea>
-      <button type="submit">Adicionar Comentário</button>
-    </form>
-  </div>
-</div>
+    // Verifica tema salvo
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
 
-<script src="tarefas.js"></script>
+    toggleThemeBtn.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
+  </script>
+
+  <script src="tarefas.js"></script>
 </body>
 </html>
