@@ -94,3 +94,12 @@ commentForm.onsubmit = e => {
 };
 
 renderTasks();
+
+ const params = new URLSearchParams(window.location.search);
+            const anexosUl = document.currentScript.parentElement.querySelector('ul');
+            const link = params.get('attachmentLink');
+            if(link){
+              const li = document.createElement('li');
+              li.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">📎 Ver anexo</a>`;
+              anexosUl.appendChild(li);
+            }
