@@ -1,11 +1,83 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Barra de navegação */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3366cc;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Notificação */
+.notificacoes {
+  position: relative;
+}
+
+.sino {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.caixa-notificacao {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: white;
+  color: #333;
+  border-radius: 6px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  min-width: 220px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.sino:focus + .caixa-notificacao,
+.sino:active + .caixa-notificacao {
+  display: block;
+}
+
+/* Página principal */
 body {
   font-family: Arial, sans-serif;
   background-color: #f1f1f1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .login-container {
@@ -14,6 +86,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 350px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -84,10 +157,11 @@ button:focus {
   text-decoration: underline;
 }
 
-/* Dark mode automático */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
+    color: #f0f0f0;
   }
 
   .login-container {
@@ -115,5 +189,14 @@ button:focus {
 
   .cadastro-texto a {
     color: #88aaff;
+  }
+
+  .navbar {
+    background-color: #1c1c3c;
+  }
+
+  .caixa-notificacao {
+    background-color: #333;
+    color: white;
   }
 }
