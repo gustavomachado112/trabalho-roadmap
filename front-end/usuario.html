@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Perfil do Usuário</title>
-  <link rel="stylesheet" href="usuario.css">
+  <link rel="stylesheet" href="usuario.css" />
 </head>
 <body>
+  <header>
+    <nav class="site-nav">
+      <h1>Agenda Inteligente</h1>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tarefas.html">Tarefas</a></li>
+        <li><a href="perfil.html" aria-current="page">Perfil</a></li>
+        <li><a href="agendas.html">Agendas</a></li>
+        <li><a href="recorrencia.html">Recorrência</a></li>
+        <li><a href="status.html">Status</a></li>
+      </ul>
+      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+    </nav>
+  </header>
+
   <main class="container" role="main" aria-labelledby="titulo">
     <h1 id="titulo">Perfil do Usuário</h1>
 
@@ -40,5 +55,23 @@
       <input type="text" placeholder="Novo CPF" class="input-camuflado" aria-label="Novo CPF">
     </section>
   </main>
+
+  <script>
+    const btn = document.getElementById('modo-btn');
+    const body = document.body;
+    const temaSalvo = localStorage.getItem('tema') || 'light';
+
+    if (temaSalvo === 'dark') {
+      body.classList.add('dark-mode');
+      btn.textContent = '☀️';
+    }
+
+    btn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const novoTema = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('tema', novoTema);
+      btn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
 </body>
 </html>
