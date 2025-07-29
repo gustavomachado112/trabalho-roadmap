@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Status Geral</title>
-  <link rel="stylesheet" href="status.css">
+  <link rel="stylesheet" href="status.css" />
 </head>
 <body>
   <header>
-    <h1>Status da Agenda</h1>
+    <nav>
+      <h1>Agenda Inteligente</h1>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tarefas.html">Tarefas</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="agendas.html">Agendas</a></li>
+        <li><a href="recorrencia.html">Recorrência</a></li>
+        <li><a href="status.html" aria-current="page">Status</a></li>
+      </ul>
+      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+    </nav>
   </header>
 
   <main>
@@ -33,9 +44,9 @@
     <section class="eventos">
       <h2>Próximos Eventos</h2>
       <ul id="lista-eventos">
-        <li> Reunião com equipe - 30/07/2025</li>
-        <li> Apresentação de projeto - 02/08/2025</li>
-        <li> Revisão semanal - 04/08/2025</li>
+        <li>Reunião com equipe - 30/07/2025</li>
+        <li>Apresentação de projeto - 02/08/2025</li>
+        <li>Revisão semanal - 04/08/2025</li>
       </ul>
     </section>
 
@@ -47,7 +58,23 @@
   </main>
 
   <script>
-    // Aqui você pode, futuramente, buscar os dados dinamicamente
+    // Dark Mode Toggle simples
+    const btn = document.getElementById('modo-btn');
+    const body = document.body;
+    const temaSalvo = localStorage.getItem('tema') || 'light';
+
+    if (temaSalvo === 'dark') {
+      body.classList.add('dark-mode');
+      btn.textContent = '☀️';
+    }
+
+    btn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const novoTema = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('tema', novoTema);
+      btn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
+    });
+
     console.log("Página de status carregada.");
   </script>
 </body>
