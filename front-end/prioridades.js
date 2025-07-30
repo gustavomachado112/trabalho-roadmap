@@ -1,51 +1,34 @@
-// Dark Mode
-const modoBtn = document.getElementById('modo-btn');
-const body = document.body;
-const temaSalvo = localStorage.getItem('tema') || 'light';
-
-if (temaSalvo === 'dark') {
-  body.classList.add('dark-mode');
-  modoBtn.textContent = '☀️';
-}
-
-modoBtn.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  const novoTema = body.classList.contains('dark-mode') ? 'dark' : 'light';
-  localStorage.setItem('tema', novoTema);
-  modoBtn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
+// Dark Mode Toggle
+const toggle = document.getElementById("darkModeToggle");
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
 });
 
-// Notificações
-const notifBtn = document.getElementById('notificacoes-btn');
-const notifBox = document.getElementById('notificacoes');
-notifBtn.addEventListener('click', () => {
-  notifBox.classList.toggle('visivel');
-});
+// Formulário de prioridades
+const form = document.getElementById("formPrioridade");
+const listaPrioridades = document.getElementById("prioridadesList");
 
-// Prioridades
-const form = document.getElementById('form-prioridade');
-const lista = document.getElementById('lista-prioridades');
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+  const confirmacao = confirm("Deseja realmente adicionar esta prioridade?");
+  if (!confirmacao) return;
 
-  const nome = document.getElementById('nome').value.trim();
-  const urgencia = document.getElementById('urgencia').value;
-  const descricao = document.getElementById('descricao').value.trim();
+  const nome = document.getElementById("nome").value;
+  const urgencia = document.getElementById("urgencia").value;
+  const descricao = document.getElementById("descricao").value;
+  const lista = document.getElementById("lista").value;
 
-  if (!nome || !urgencia || !descricao) {
-    alert("Preencha todos os campos!");
-    return;
-  }
-
-  const li = document.createElement('li');
-  li.innerHTML = `
-    <strong>${nome}</strong>
-    <span class="urgencia-${urgencia}">Urgência: ${urgencia}</span><br/>
-    <span>${descricao}</span>
+  const div = document.createElement("div");
+  div.innerHTML = `
+    <h3>${nome}</h3>
+    <p><strong>Urgência:</strong> ${urgencia}</p>
+    <p><strong>Descrição:</strong> ${descricao}</p>
+    <p><strong>Lista:</strong> ${lista}</p>
+    <hr>
   `;
 
-  lista.appendChild(li);
+  listaPrioridades.appendChild(div);
 
   form.reset();
 });
