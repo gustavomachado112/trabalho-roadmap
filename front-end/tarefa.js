@@ -1,47 +1,53 @@
-
-const toggle = document.getElementById('toggle');
+const toggleBtn = document.getElementById('toggleThemeBtn');
 const body = document.body;
 
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    toggle.checked = true;
-}
-
-toggle.addEventListener('change', () => {
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
 });
 
-const form = document.getElementById('task-form');
-const taskList = document.getElementById('task-list');
+const form = document.getElementById('taskForm');
+const taskList = document.getElementById('taskList');
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
+  Swal.fire({
+    title: 'Confirmar criação?',
+    text: 'Você tem certeza que quer criar esta tarefa?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sim, criar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const taskName = document.getElementById('taskName').value;
+      const description = document.getElementById('description').value;
 
-    if (!title || !description) return;
-
-    if (!confirm('Você tem certeza que quer criar essa tarefa?')) return;
-
-    const taskItem = document.createElement('li');
-    taskItem.innerHTML = `
-        <h3>${title}</h3>
+      const taskItem = document.createElement('div');
+      taskItem.classList.add('task-item');
+      taskItem.innerHTML = `
+        <strong>${taskName}</strong><br>
         <p>${description}</p>
         <button class="delete-btn">Excluir</button>
-    `;
+      `;
 
-    taskItem.querySelector('.delete-btn').addEventListener('click', () => {
-        if (confirm('Você tem certeza que quer excluir esta tarefa?')) {
+      taskItem.querySelector('.delete-btn').addEventListener('click', () => {
+        Swal.fire({
+          title: 'Excluir tarefa?',
+          text: 'Tem certeza que deseja excluir esta tarefa?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sim, excluir',
+          cancelButtonText: 'Cancelar'
+        }).then((res) => {
+          if (res.isConfirmed) {
             taskItem.remove();
-        }
-    });
+          }
+        });
+      });
 
-    taskList.appendChild(taskItem);
-    form.reset();
+      taskList.appendChild(taskItem);
+      form.reset();
+    }
+  });
 });
