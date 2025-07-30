@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agenda Inteligente - Nova Tarefa</title>
   <link rel="stylesheet" href="tarefas.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <header class="topbar">
@@ -85,8 +86,6 @@
       <h2>Tarefas Salvas</h2>
       <div id="taskList" class="taskList"></div>
 
-      <!-- Anexos e Comentários seguem igual ao que você tinha -->
-
       <div id="commentSection" style="display:none;">
         <h3>Comentários da Tarefa</h3>
         <div id="selectedTaskName" class="selected-task-name"></div>
@@ -100,5 +99,7 @@
       </div>
     </div>
   </main>
+
+  <script src="tarefas.js"></script>
 </body>
 </html>
