@@ -18,7 +18,7 @@
   </header>
 
   <main class="cadastro-container">
-    <form class="cadastro-form" action="tarefas.html" method="post">
+    <form class="cadastro-form" action="tarefas.html" method="post" onsubmit="return confirmarEnvio()">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" required>
 
@@ -39,12 +39,18 @@
   </main>
 
   <script>
+    // Alternância de tema
     const toggle = document.getElementById("toggle-theme");
     toggle.addEventListener("click", () => {
       const html = document.documentElement;
       const atual = html.getAttribute("data-theme");
       html.setAttribute("data-theme", atual === "dark" ? "light" : "dark");
     });
+
+    // Confirmação antes de enviar o cadastro
+    function confirmarEnvio() {
+      return confirm("Tem certeza que deseja enviar o cadastro?");
+    }
   </script>
 </body>
 </html>
