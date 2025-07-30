@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agendas</title>
   <link rel="stylesheet" href="agendas.css" />
+  <script src="agendas.js" defer></script>
 </head>
 <body class="light-mode">
 
@@ -12,31 +13,31 @@
   <nav>
     <h1>Agenda Inteligente</h1>
     <ul>
-      
-      <li><a href="index.html">Login</a></li
-      <li><a href="cadastro.html">Cadastro</a></li
-      <li><a href="prioridade.html">prioridade</a></li>
+      <li><a href="index.html">Login</a></li>
+      <li><a href="cadastro.html">Cadastro</a></li>
+      <li><a href="prioridade.html">Prioridade</a></li>
       <li><a href="tarefas.html">Tarefas</a></li>
-      <li><a href="usuario.html">Usuario</a></li>
+      <li><a href="usuario.html">Usuário</a></li>
       <li><a href="agendas.html">Agendas</a></li>
       <li><a href="recorrencia.html">Recorrência</a></li>
       <li><a href="status.html">Status</a></li>
-      <li><a href="prioridade.html">prioridade</a></li
     </ul>
 
- 
-    <div class="notificacao-container">
-      <input type="checkbox" id="notif-toggle" />
-      <label for="notif-toggle" aria-label="Abrir notificações" title="Notificações">🔔</label>
-      <div class="notif-dropdown" role="region" aria-live="polite" aria-label="Notificações">
-        No momento você não tem nenhuma notificação.
+    <div class="nav-direita">
+      <div class="notificacao-container">
+        <input type="checkbox" id="notif-toggle" />
+        <label for="notif-toggle" aria-label="Abrir notificações" title="Notificações">🔔</label>
+        <div class="notif-dropdown" role="region" aria-live="polite" aria-label="Notificações">
+          No momento você não tem nenhuma notificação.
+        </div>
       </div>
+
+      <button id="modo-btn" title="Alternar tema">🌙</button>
     </div>
   </nav>
 </header>
 
 <main>
-
   <section class="agenda-dados">
     <h2>Minha Agenda</h2>
     <p><strong>Usuário:</strong> João da Silva</p>
