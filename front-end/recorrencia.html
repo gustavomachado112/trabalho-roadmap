@@ -51,29 +51,34 @@
   </main>
 
   <script>
-    // Dark Mode Toggle Minimalista
-    const btn = document.getElementById('modo-btn');
-    const body = document.body;
-    const temaSalvo = localStorage.getItem('tema') || 'light';
+  
+const toggleButton = document.getElementById("modo-toggle");
+const body = document.body;
 
-    if (temaSalvo === 'dark') {
-      body.classList.add('dark-mode');
-      btn.textContent = '☀️';
-    }
 
-    btn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      const novoTema = body.classList.contains('dark-mode') ? 'dark' : 'light';
-      localStorage.setItem('tema', novoTema);
-      btn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
-    });
+const temaSalvo = localStorage.getItem("tema");
+if (temaSalvo === "dark") {
+  body.classList.add("dark-mode");
+  toggleButton.checked = true;
+}
 
-    // Form submission
-    document.getElementById("recorrencia-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert("Recorrência registrada com sucesso!");
-      this.reset();
-    });
+
+toggleButton.addEventListener("change", () => {
+  body.classList.toggle("dark-mode");
+  const temaAtual = body.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem("tema", temaAtual);
+});
+
+document.getElementById("recorrencia-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const confirmar = confirm("Tem certeza que deseja registrar esta recorrência?");
+  if (!confirmar) return;
+
+  alert("Recorrência registrada com sucesso!");
+  this.reset();
+});
+
   </script>
 </body>
 </html>
