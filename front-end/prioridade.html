@@ -2,60 +2,41 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lista de Prioridades</title>
-  <link rel="stylesheet" href="prioridades.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prioridades</title>
+  <link rel="stylesheet" href="prioridades.css" />
 </head>
 <body>
-  <header class="top-bar">
-    <nav>
-      <ul class="nav">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="tarefas.html">Tarefas</a></li>
-        <li><a href="prioridades.html" class="active">Prioridades</a></li>
-        <li><a href="calendario.html">Calendário</a></li>
-        <li><a href="perfil.html">Perfil</a></li>
-      </ul>
-    </nav>
-    <div class="actions">
-      <button id="notificacoes-btn" aria-label="Ver notificações">🔔</button>
-      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
-    </div>
+  <header>
+    <h1>Prioridades</h1>
+    <button id="darkModeToggle">🌙</button>
   </header>
 
-  <div id="notificacoes" class="notificacoes">Você não tem notificações.</div>
+  <main>
+    <form id="formPrioridade">
+      <label for="nome">Nome da Prioridade:</label>
+      <input type="text" id="nome" required />
 
-  <main class="container">
-    <h1>Minhas Prioridades</h1>
+      <label for="urgencia">Nível de Urgência:</label>
+      <select id="urgencia" required>
+        <option value="">Selecione</option>
+        <option value="Baixa">Baixa</option>
+        <option value="Média">Média</option>
+        <option value="Alta">Alta</option>
+      </select>
 
-    <form id="form-prioridade">
-      <div class="form-group">
-        <label for="nome">Nome da Prioridade:</label>
-        <input type="text" id="nome" required>
-      </div>
+      <label for="descricao">Descrição:</label>
+      <textarea id="descricao" required></textarea>
 
-      <div class="form-group">
-        <label for="urgencia">Nível de Urgência:</label>
-        <select id="urgencia" required>
-          <option value="">Selecione</option>
-          <option value="Baixa">Baixa</option>
-          <option value="Média">Média</option>
-          <option value="Alta">Alta</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" rows="3" required></textarea>
-      </div>
+      <label for="lista">Lista:</label>
+      <input type="text" id="lista" required />
 
       <button type="submit">Adicionar Prioridade</button>
     </form>
 
-    <ul id="lista-prioridades"></ul>
+    <section id="prioridadesList"></section>
   </main>
 
-<script src="prioridades.js"></script>
-
+  <script src="prioridades.js"></script>
 </body>
 </html>
