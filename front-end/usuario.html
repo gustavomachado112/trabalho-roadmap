@@ -27,36 +27,37 @@
 
     <section class="info-bloco">
       <p><strong>Nome:</strong> [informação oculta]</p>
-      <button class="btn-alterar" aria-label="Alterar Nome">Alterar Nome</button>
+      <button class="btn-alterar" onclick="confirmarAlteracao('nome')" aria-label="Alterar Nome">Alterar Nome</button>
       <input type="text" placeholder="Novo nome" class="input-camuflado" aria-label="Novo nome">
     </section>
 
     <section class="info-bloco">
       <p><strong>E-mail:</strong> ********@gmail.com</p>
-      <button class="btn-alterar" aria-label="Alterar E-mail">Alterar E-mail</button>
+      <button class="btn-alterar" onclick="confirmarAlteracao('e-mail')" aria-label="Alterar E-mail">Alterar E-mail</button>
       <input type="email" placeholder="Novo e-mail" class="input-camuflado" aria-label="Novo e-mail">
     </section>
 
     <section class="info-bloco">
       <p><strong>Senha:</strong> [informação oculta]</p>
-      <button class="btn-alterar" aria-label="Alterar Senha">Alterar Senha</button>
+      <button class="btn-alterar" onclick="confirmarAlteracao('senha')" aria-label="Alterar Senha">Alterar Senha</button>
       <input type="password" placeholder="Nova senha" class="input-camuflado" aria-label="Nova senha">
     </section>
 
     <section class="info-bloco">
       <p><strong>Telefone:</strong> [informação oculta]</p>
-      <button class="btn-alterar" aria-label="Alterar Telefone">Alterar Telefone</button>
+      <button class="btn-alterar" onclick="confirmarAlteracao('telefone')" aria-label="Alterar Telefone">Alterar Telefone</button>
       <input type="tel" placeholder="Novo telefone" class="input-camuflado" aria-label="Novo telefone">
     </section>
 
     <section class="info-bloco">
       <p><strong>CPF:</strong> [informação oculta]</p>
-      <button class="btn-alterar" aria-label="Alterar CPF">Alterar CPF</button>
+      <button class="btn-alterar" onclick="confirmarAlteracao('CPF')" aria-label="Alterar CPF">Alterar CPF</button>
       <input type="text" placeholder="Novo CPF" class="input-camuflado" aria-label="Novo CPF">
     </section>
   </main>
 
   <script>
+    // Dark Mode / Light Mode
     const btn = document.getElementById('modo-btn');
     const body = document.body;
     const temaSalvo = localStorage.getItem('tema') || 'light';
@@ -72,6 +73,14 @@
       localStorage.setItem('tema', novoTema);
       btn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
     });
+
+    // Switch Alert (confirmação)
+    function confirmarAlteracao(tipo) {
+      const confirmar = confirm(`Você tem certeza que deseja alterar sua ${tipo}?`);
+      if (confirmar) {
+        alert(`${tipo.charAt(0).toUpperCase() + tipo.slice(1)} alterado com sucesso!`);
+      }
+    }
   </script>
 </body>
 </html>
