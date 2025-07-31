@@ -1,222 +1,270 @@
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --primary-color: #4f73ff;
+  --input-bg: #f1f1f1;
+  --border-color: #ccc;
+  --button-bg: var(--primary-color);
+  --button-hover-bg: #3a5dc8;
+  --header-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --notif-bg: #fff;
+  --notif-text: #333;
+  --container-bg: #ffffff;
+  --container-shadow: rgba(0, 0, 0, 0.15);
+  --form-label-color: #555;
+  --form-input-bg: #ffffff;
+  --form-input-border: #ddd;
+  --form-input-focus-shadow: rgba(79, 115, 255, 0.3);
 }
-
-
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 100px 15px 40px;
-  color: #fff;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 
 body.dark-mode {
-  background: #121212;
-  color: #ddd;
+  --bg-color: #121212;
+  --text-color: #e1e1e1;
+  --primary-color: #6688ff;
+  --input-bg: #2c2c2c;
+  --border-color: #444;
+  --button-bg: #3366cc;
+  --button-hover-bg: #254d99;
+  --header-bg: #1e1e1e;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --notif-bg: #222;
+  --notif-text: #eee;
+  --container-bg: #1e1e1e;
+  --container-shadow: rgba(255, 255, 255, 0.1);
+  --form-label-color: #ccc;
+  --form-input-bg: #333333;
+  --form-input-border: #555;
+  --form-input-focus-shadow: rgba(102, 136, 255, 0.3);
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 90px;
+}
 
-.topbar {
+header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: #3f51b5;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  z-index: 999;
-  height: 60px;
+  background-color: var(--header-bg);
+  padding: 15px 30px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  border-radius: 0 0 16px 16px;
+  z-index: 1000;
 }
 
-body.dark-mode .topbar {
-  background: #222;
-}
-
-.topbar nav {
+.site-nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  align-items: center;
 }
 
-.menu {
-  list-style: none;
+.nav-esquerda {
   display: flex;
+  align-items: center;
   gap: 16px;
 }
 
-.menu li a {
-  color: white;
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.site-nav h1 {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.site-nav ul li a {
+  color: var(--text-color);
   text-decoration: none;
   font-weight: 600;
-  padding: 10px 12px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-.menu li a:hover,
-.menu li a.active {
-  background: #a37bfa;
-  color: white;
+.site-nav ul li a:hover,
+.site-nav ul li a[aria-current="page"] {
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
-body.dark-mode .menu li a {
-  color: #ddd;
-}
-
-body.dark-mode .menu li a:hover,
-body.dark-mode .menu li a.active {
-  background: #a37bfa;
-  color: white;
-}
-
-.actions {
+.nav-direita {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.actions input.notification-toggle {
-  display: none;
-}
-
-.actions label[for="notificationToggle"] {
-  cursor: pointer;
-  font-size: 22px;
+#notificationBtn,
+#modo-btn {
+  background-color: var(--primary-color);
   color: white;
-  padding: 6px 8px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
-
-.actions label[for="notificationToggle"]:hover {
-  background: rgba(255,255,255,0.2);
-}
-
-.actions button#toggleThemeBtn {
-  background: transparent;
   border: none;
-  font-size: 22px;
+  padding: 10px 14px;
+  border-radius: 50px;
   cursor: pointer;
-  color: white;
-  transition: color 0.3s ease;
-  padding: 6px 8px;
-  border-radius: 6px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.actions button#toggleThemeBtn:hover {
-  background: rgba(255,255,255,0.2);
+#notificationBtn:hover,
+#modo-btn:hover {
+  background-color: var(--button-hover-bg);
+  transform: scale(1.1);
 }
 
-/* Dropdown notificações */
 .dropdown {
-  position: fixed;
-  top: 60px;
+  position: absolute;
+  top: 70px;
   right: 20px;
-  background: #3f51b5;
-  color: white;
-  padding: 12px 16px;
+  background-color: var(--notif-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  width: 260px;
-  max-width: 90vw;
-  z-index: 1000;
-  display: none;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: var(--notif-text);
+  width: 280px;
+  z-index: 1500;
 }
 
-/* Mostrar dropdown quando checkbox ativado */
-.notification-toggle:checked ~ #notificationDropdown {
-  display: block;
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
-/* Container principal */
 .container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border-radius: 16px;
+  background-color: var(--container-bg);
+  border-radius: 12px;
   padding: 30px;
   width: 100%;
-  max-width: 480px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
+  max-width: 500px;
+  box-shadow: 0 4px 15px var(--container-shadow);
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-body.dark-mode .container {
-  background: rgba(30, 30, 30, 0.8);
-}
-
-/* Títulos */
 h1 {
   font-weight: 700;
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 30px;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: var(--text-color);
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
+  text-align: left;
 }
 
 label {
+  display: block;
   font-weight: 600;
-  font-size: 14px;
-  color: #e0e0e0;
-  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: var(--form-label-color);
+  margin-bottom: 8px;
 }
 
 input[type="text"],
-input[type="date"] {
-  padding: 12px;
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px 15px;
   border-radius: 8px;
-  border: none;
-  font-size: 15px;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: #333;
-  transition: box-shadow 0.3s ease;
+  border: 1px solid var(--form-input-border);
+  font-size: 1rem;
+  background-color: var(--form-input-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input:focus {
-  box-shadow: 0 0 0 2px #a37bfa;
+input:focus,
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--form-input-focus-shadow);
   outline: none;
 }
 
-button {
-  background: #a37bfa;
+button[type="submit"] {
+  background: var(--button-bg);
   color: white;
   border: none;
-  padding: 14px;
+  padding: 14px 20px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 1.1rem;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  margin-top: 20px;
 }
 
-button:hover {
-  background: #764ba2;
+button[type="submit"]:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
 }
 
-/* Responsividade */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .site-nav ul {
+    display: none;
+  }
+  .site-nav .nav-esquerda {
+    width: 100%;
+    justify-content: center;
+  }
+  header {
+    padding: 15px 15px;
+  }
   .container {
-    padding: 20px;
+    padding: 25px;
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  .site-nav h1 {
+    font-size: 1.3rem;
+  }
+  .logo {
+    height: 35px;
+  }
+  #notificationBtn,
+  #modo-btn {
+    padding: 8px 12px;
+    font-size: 16px;
   }
 }
