@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -157,4 +157,10 @@ body.dark-mode button:hover {
 
 body.dark-mode .cadastro-texto a {
   color: #88aaff;
+}
+
+body.dark-mode label,
+body.dark-mode .subtitle,
+body.dark-mode h1 {
+  color: #f0f0f0;
 }
