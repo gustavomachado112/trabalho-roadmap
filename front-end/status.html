@@ -8,17 +8,23 @@
 </head>
 <body>
   <header>
-    <nav>
-      <h1>Agenda Inteligente</h1>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="tarefas.html">Tarefas</a></li>
-        <li><a href="perfil.html">Perfil</a></li>
-        <li><a href="agendas.html">Agendas</a></li>
-        <li><a href="recorrencia.html">Recorrência</a></li>
-        <li><a href="status.html" aria-current="page">Status</a></li>
-      </ul>
-      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+    <nav class="site-nav" role="navigation" aria-label="Menu principal">
+      <div class="nav-esquerda">
+        <img src="logo.png" alt="Logo Agenda Inteligente" class="logo" />
+        <h1>Agenda Inteligente</h1>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="tarefas.html">Tarefas</a></li>
+          <li><a href="usuario.html">Perfil</a></li>
+          <li><a href="agendas.html">Agendas</a></li>
+          <li><a href="recorrencia.html">Recorrência</a></li>
+          <li><a href="status.html" aria-current="page">Status</a></li>
+        </ul>
+      </div>
+      <div class="nav-direita">
+        <button id="notificationBtn" aria-label="Notificações">🔔</button>
+        <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+      </div>
     </nav>
   </header>
 
@@ -58,7 +64,6 @@
   </main>
 
   <script>
-    // Dark Mode Toggle simples
     const btn = document.getElementById('modo-btn');
     const body = document.body;
     const temaSalvo = localStorage.getItem('tema') || 'light';
@@ -75,7 +80,10 @@
       btn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
     });
 
-    console.log("Página de status carregada.");
+    document.getElementById('notificationBtn').addEventListener('click', () => {
+     
+      alert('nenhuma notificação no momento');
+    });
   </script>
 </body>
 </html>
