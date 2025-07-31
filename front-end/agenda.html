@@ -3,71 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agendas</title>
+  <title>Agendas - Agenda Inteligente</title>
   <link rel="stylesheet" href="agendas.css" />
   <script src="agendas.js" defer></script>
 </head>
-<body class="light-mode">
+<body>
 
-<header>
+<header class="topbar">
+  <div class="logo-container">
+    <img src="logo.png" alt="Logo da Agenda Inteligente" class="logo" />
+    <span class="logo-text">Agenda Inteligente</span>
+  </div>
+
   <nav>
-    <h1>Agenda Inteligente</h1>
-    <ul>
-      <li><a href="index.html">Login</a></li>
-      <li><a href="cadastro.html">Cadastro</a></li>
-      <li><a href="prioridade.html">Prioridade</a></li>
+    <ul class="menu">
+      <li><a href="index.html">Início</a></li>
       <li><a href="tarefas.html">Tarefas</a></li>
-      <li><a href="usuario.html">Usuário</a></li>
-      <li><a href="agendas.html">Agendas</a></li>
-      <li><a href="recorrencia.html">Recorrência</a></li>
+      <li><a href="usuario.html">Perfil</a></li>
+      <li><a href="agendas.html" class="active">Agenda</a></li>
+      <li><a href="recorrencia.html">Frequência</a></li>
       <li><a href="status.html">Status</a></li>
     </ul>
-
-    <div class="nav-direita">
-      <div class="notificacao-container">
-        <input type="checkbox" id="notif-toggle" />
-        <label for="notif-toggle" aria-label="Abrir notificações" title="Notificações">🔔</label>
-        <div class="notif-dropdown" role="region" aria-live="polite" aria-label="Notificações">
-          No momento você não tem nenhuma notificação.
-        </div>
-      </div>
-
-      <button id="modo-btn" title="Alternar tema">🌙</button>
-    </div>
   </nav>
+
+  <div class="actions">
+    <button id="notificationBtn" title="Notificações">🔔</button>
+    <button id="toggleThemeBtn" title="Alternar modo claro/escuro">🌙</button>
+  </div>
 </header>
 
+<div id="notificationDropdown" class="dropdown" hidden>
+  No momento você não tem nenhuma notificação.
+</div>
+
 <main>
-  <section class="agenda-dados">
-    <h2>Minha Agenda</h2>
-    <p><strong>Usuário:</strong> João da Silva</p>
-    <p><strong>Nome da Agenda:</strong> Compromissos Pessoais</p>
-    <p><strong>Descrição:</strong> Tarefas do dia a dia</p>
-    <p><strong>Tamanho:</strong> Média</p>
-  </section>
+  <div class="agenda-content">
+    <section class="agenda-dados">
+      <h2>Minha Agenda</h2>
+      <form>
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" placeholder="Digite seu nome de usuário" required />
 
-  <section class="compartilhamento">
-    <h2>Compartilhamentos</h2>
-    <form id="form-compartilhamento">
-      <input type="text" placeholder="Usuário" required />
-      <input type="text" placeholder="Tarefa compartilhada" required />
-      <select>
-        <option value="leitura">Leitura</option>
-        <option value="edicao">Edição</option>
-      </select>
-      <button type="submit">Compartilhar</button>
-    </form>
-  </section>
+        <label for="nomeAgenda">Nome da Agenda</label>
+        <input type="text" id="nomeAgenda" placeholder="Nome da agenda" required />
 
-  <section class="calendario">
-    <h2>Calendário Integrado</h2>
-    <form id="form-calendario">
-      <input type="text" placeholder="Nome do calendário" required />
-      <input type="text" placeholder="Descrição" />
-      <input type="url" placeholder="Link do calendário" />
-      <button type="submit">Adicionar</button>
-    </form>
-  </section>
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" placeholder="Descrição da agenda"></textarea>
+
+        <label for="tamanho">Tamanho</label>
+        <select id="tamanho" required>
+          <option value="pequena">Pequena</option>
+          <option value="media" selected>Média</option>
+          <option value="grande">Grande</option>
+        </select>
+      </form>
+    </section>
+
+    <section class="compartilhamento">
+      <h2>Compartilhamentos</h2>
+      <form id="form-compartilhamento">
+        <input type="text" placeholder="Usuário" required />
+        <input type="text" placeholder="Tarefa compartilhada" required />
+        <select>
+          <option value="leitura">Leitura</option>
+          <option value="edicao">Edição</option>
+        </select>
+        <button type="submit">Compartilhar</button>
+      </form>
+    </section>
+
+<section class="calendario">
+  <h2>Adicionar Calendário Externo</h2>
+  <p class="descricao-calendario">Cole aqui o link do seu calendário externo (Google Calendar, Outlook, etc.) para integrá-lo à sua agenda.</p>
+  <form id="form-calendario">
+    <label for="nomeCalendario">Nome do Calendário</label>
+    <input type="text" id="nomeCalendario" placeholder="Nome do calendário" required />
+
+    <label for="descricaoCalendario">Descrição</label>
+    <input type="text" id="descricaoCalendario" placeholder="Descrição (opcional)" />
+
+    <label for="linkCalendario">Link do Calendário</label>
+    <input type="url" id="linkCalendario" placeholder="https://exemplo.com/seu-calendario" required />
+
+    <button type="submit">Adicionar Link</button>
+  </form>
+</section>
+
+  </div>
 </main>
 
 </body>
