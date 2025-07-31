@@ -3,88 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agenda Inteligente - Evento</title>
+  <title>Eventos - Agenda Inteligente</title>
   <link rel="stylesheet" href="evento.css" />
+  <script src="evento.js" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <nav>
-      <ul class="menu">
-        <li><a href="agendas.html">Agenda</a></li>
-        <li><a href="prioridades.html">Prioridades</a></li>
+
+<header>
+  <nav class="site-nav" role="navigation" aria-label="Menu principal">
+    <div class="nav-esquerda">
+      <img src="logo.png" alt="Logo Agenda Inteligente" class="logo" />
+      <h1>Agenda Inteligente</h1>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tarefas.html">Tarefas</a></li>
+        <li><a href="usuario.html">Perfil</a></li>
+        <li><a href="agendas.html">Agendas</a></li>
         <li><a href="recorrencia.html">Recorrência</a></li>
         <li><a href="status.html">Status</a></li>
-        <li><a href="usuario.html">Usuário</a></li>
-        <li><a href="tarefas.html">Tarefas</a></li>
-        <li><a href="evento.html" class="active">Eventos</a></li>
+        <li><a href="evento.html" aria-current="page">Eventos</a></li>
       </ul>
+    </div>
+    <div class="nav-direita">
+      <button id="notificationBtn" aria-label="Notificações">🔔</button>
+      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+    </div>
+  </nav>
+</header>
 
-      <div class="actions">
-        <input type="checkbox" id="notificationToggle" class="notification-toggle" aria-label="Mostrar notificações" />
-        <label for="notificationToggle" role="button" tabindex="0" title="Notificações">🔔</label>
-        <button id="toggleThemeBtn" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro">🌙</button>
+<div id="notificationDropdown" class="dropdown" hidden>
+  No momento você não tem nenhuma notificação.
+</div>
+
+<main>
+  <div class="container" role="main" aria-labelledby="pageTitle">
+    <h1 id="pageTitle">Novo Evento</h1>
+
+    <form id="eventForm" aria-label="Formulário de Novo Evento">
+      <div class="form-group">
+        <label for="eventName">Nome do Evento</label>
+        <input type="text" id="eventName" name="eventName" required aria-required="true" />
       </div>
-    </nav>
 
-    <div id="notificationDropdown" class="dropdown" aria-live="polite" role="alert" hidden>
-      No momento, você não tem nenhuma notificação.
-    </div>
-  </header>
+      <div class="form-group">
+        <label for="startDate">Data de Início</label>
+        <input type="date" id="startDate" name="startDate" required aria-required="true" />
+      </div>
 
-  <main>
-    <div class="container" role="main" aria-labelledby="pageTitle">
-      <h1 id="pageTitle">Novo Evento</h1>
+      <div class="form-group">
+        <label for="endDate">Data de Fim</label>
+        <input type="date" id="endDate" name="endDate" required aria-required="true" />
+      </div>
 
-      <form id="eventForm" aria-label="Formulário de Novo Evento">
-        <div class="form-group">
-          <label for="eventName">Nome do Evento</label>
-          <input type="text" id="eventName" name="eventName" required aria-required="true" />
-        </div>
+      <div class="form-group">
+        <label for="category">Categoria (opcional)</label>
+        <select id="category" name="category" aria-required="false">
+          <option value="" selected>Selecione uma categoria</option>
+          <option value="corrida">Eventos de Corrida</option>
+          <option value="sair">Eventos para Sair</option>
+          <option value="pessoal">Eventos Pessoais</option>
+          <option value="estudo_faculdade">Eventos de Estudo/Faculdade</option>
+          <option value="trabalho">Eventos de Trabalho</option>
+        </select>
+      </div>
 
-        <div class="form-group">
-          <label for="startDate">Data de Início</label>
-          <input type="date" id="startDate" name="startDate" required aria-required="true" />
-        </div>
-
-        <div class="form-group">
-          <label for="endDate">Data de Fim</label>
-          <input type="date" id="endDate" name="endDate" required aria-required="true" />
-        </div>
-
-        <div class="form-group">
-          <label for="category">Categoria (opcional)</label>
-          <select id="category" name="category" aria-required="false">
-            <option value="" selected>Selecione uma categoria</option>
-            <option value="trabalho">Trabalho</option>
-            <option value="pessoal">Pessoal</option>
-            <option value="estudo">Estudo</option>
-            <option value="outros">Outros</option>
-          </select>
-        </div>
-
-        <button type="submit">Salvar Evento</button>
-      </form>
-    </div>
-  </main>
-
- <script>
-  
-  const toggleThemeBtn = document.getElementById('toggleThemeBtn');
-  toggleThemeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    toggleThemeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-  });
-
-  
-  const form = document.getElementById('eventForm');
-  form.addEventListener('submit', function(event) {
-    const confirmar = confirm("Deseja realmente salvar este evento?");
-    if (!confirmar) {
-      event.preventDefault(); 
-    }
-  });
-</script>
+      <button type="submit">Salvar Evento</button>
+    </form>
+  </div>
+</main>
 
 </body>
 </html>
-
