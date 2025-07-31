@@ -5,31 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agendas - Agenda Inteligente</title>
   <link rel="stylesheet" href="agendas.css" />
-  <script src="agendas.js" defer></script>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="logo-container">
-    <img src="logo.png" alt="Logo da Agenda Inteligente" class="logo" />
-    <span class="logo-text">Agenda Inteligente</span>
-  </div>
-
-  <nav>
-    <ul class="menu">
-      <li><a href="index.html">Início</a></li>
-      <li><a href="tarefas.html">Tarefas</a></li>
-      <li><a href="usuario.html">Perfil</a></li>
-      <li><a href="agendas.html" class="active">Agenda</a></li>
-      <li><a href="recorrencia.html">Frequência</a></li>
-      <li><a href="status.html">Status</a></li>
-    </ul>
+<header>
+  <nav class="site-nav" role="navigation" aria-label="Menu principal">
+    <div class="nav-esquerda">
+      <img src="logo.png" alt="Logo Agenda Inteligente" class="logo" />
+      <h1>Agenda Inteligente</h1>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tarefas.html">Tarefas</a></li>
+        <li><a href="usuario.html">Perfil</a></li>
+        <li><a href="agendas.html" aria-current="page">Agendas</a></li>
+        <li><a href="recorrencia.html">Recorrência</a></li>
+        <li><a href="status.html">Status</a></li>
+      </ul>
+    </div>
+    <div class="nav-direita">
+      <button id="notificationBtn" aria-label="Notificações">🔔</button>
+      <button id="modo-btn" aria-label="Alternar modo claro/escuro">🌙</button>
+    </div>
   </nav>
-
-  <div class="actions">
-    <button id="notificationBtn" title="Notificações">🔔</button>
-    <button id="toggleThemeBtn" title="Alternar modo claro/escuro">🌙</button>
-  </div>
 </header>
 
 <div id="notificationDropdown" class="dropdown" hidden>
@@ -72,22 +69,22 @@
       </form>
     </section>
 
-<section class="calendario">
-  <h2>Adicionar Calendário Externo</h2>
-  <p class="descricao-calendario">Cole aqui o link do seu calendário externo (Google Calendar, Outlook, etc.) para integrá-lo à sua agenda.</p>
-  <form id="form-calendario">
-    <label for="nomeCalendario">Nome do Calendário</label>
-    <input type="text" id="nomeCalendario" placeholder="Nome do calendário" required />
+    <section class="calendario">
+      <h2>Adicionar Calendário Externo</h2>
+      <p class="descricao-calendario">Cole aqui o link do seu calendário externo (Google Calendar, Outlook, etc.) para integrá-lo à sua agenda.</p>
+      <form id="form-calendario">
+        <label for="nomeCalendario">Nome do Calendário</label>
+        <input type="text" id="nomeCalendario" placeholder="Nome do calendário" required />
 
-    <label for="descricaoCalendario">Descrição</label>
-    <input type="text" id="descricaoCalendario" placeholder="Descrição (opcional)" />
+        <label for="descricaoCalendario">Descrição</label>
+        <input type="text" id="descricaoCalendario" placeholder="Descrição (opcional)" />
 
-    <label for="linkCalendario">Link do Calendário</label>
-    <input type="url" id="linkCalendario" placeholder="https://exemplo.com/seu-calendario" required />
+        <label for="linkCalendario">Link do Calendário</label>
+        <input type="url" id="linkCalendario" placeholder="https://exemplo.com/seu-calendario" required />
 
-    <button type="submit">Adicionar Link</button>
-  </form>
-</section>
+        <button type="submit">Adicionar Link</button>
+      </form>
+    </section>
 
   </div>
 </main>
