@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfil do Usuário</title>
+  <title>Perfil do Usuário - Agenda Inteligente</title>
   <link rel="stylesheet" href="usuario.css" />
 </head>
 <body>
   <header>
-    <nav class="site-nav">
+    <nav class="site-nav" role="navigation" aria-label="Menu principal">
       <h1>Agenda Inteligente</h1>
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="tarefas.html">Tarefas</a></li>
-        <li><a href="perfil.html" aria-current="page">Perfil</a></li>
+        <li><a href="usuario.html" aria-current="page">Perfil</a></li>
         <li><a href="agendas.html">Agendas</a></li>
         <li><a href="recorrencia.html">Recorrência</a></li>
         <li><a href="status.html">Status</a></li>
@@ -57,7 +57,6 @@
   </main>
 
   <script>
-    // Dark Mode / Light Mode
     const btn = document.getElementById('modo-btn');
     const body = document.body;
     const temaSalvo = localStorage.getItem('tema') || 'light';
@@ -74,10 +73,8 @@
       btn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
     });
 
-    // Switch Alert (confirmação)
     function confirmarAlteracao(tipo) {
-      const confirmar = confirm(`Você tem certeza que deseja alterar sua ${tipo}?`);
-      if (confirmar) {
+      if(confirm(`Você tem certeza que deseja alterar sua ${tipo}?`)) {
         alert(`${tipo.charAt(0).toUpperCase() + tipo.slice(1)} alterado com sucesso!`);
       }
     }
