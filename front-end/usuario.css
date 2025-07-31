@@ -1,4 +1,4 @@
-/* Reset */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,7 +17,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Navbar */
+
 .site-nav {
   position: fixed;
   top: 0;
@@ -59,7 +59,7 @@ body {
   text-decoration: underline;
 }
 
-/* Botão modo claro/escuro */
+
 #modo-btn {
   position: fixed;
   top: 16px;
@@ -80,7 +80,7 @@ body {
   transform: scale(1.1);
 }
 
-/* Container principal */
+
 .container {
   background-color: #fff;
   padding: 40px 30px;
@@ -88,12 +88,12 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 480px;
-  margin-top: 90px; /* para descer após navbar fixa */
+  margin-top: 90px; 
   color: #1a1a1a;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Títulos */
+
 h1 {
   font-size: 28px;
   font-weight: 700;
@@ -101,7 +101,7 @@ h1 {
   text-align: center;
 }
 
-/* Blocos de informação */
+
 .info-bloco {
   margin-bottom: 24px;
 }
@@ -112,7 +112,7 @@ h1 {
   margin-bottom: 8px;
 }
 
-/* Botões alterar */
+
 .btn-alterar {
   background: linear-gradient(to right, #4f73ff, #2c50d6);
   border: none;
@@ -128,7 +128,7 @@ h1 {
   background: linear-gradient(to right, #3e5ed6, #223fa1);
 }
 
-/* Inputs camuflados */
+
 .input-camuflado {
   margin-top: 10px;
   padding: 12px;
@@ -146,7 +146,7 @@ h1 {
   background-color: #eef4ff;
 }
 
-/* Modo escuro */
+
 body.dark-mode {
   background-color: #121212;
   color: #e1e1e1;
@@ -203,5 +203,33 @@ body.dark-mode .input-camuflado::placeholder {
 body.dark-mode label,
 body.dark-mode .subtitle,
 body.dark-mode h1 {
+  color: #f0f0f0;
+}
+
+
+.nav-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.site-nav ul {
+  margin-left: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.site-nav h1 {
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+
+
+body.dark-mode .info-bloco p strong {
   color: #f0f0f0;
 }
