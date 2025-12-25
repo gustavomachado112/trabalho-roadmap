@@ -1,34 +1,66 @@
-// Dark Mode Toggle
-const toggle = document.getElementById("darkModeToggle");
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+const toggleBtn = document.getElementById("modo-btn");
+const body = document.body;
+
+const temaSalvo = localStorage.getItem('tema') || 'light';
+if (temaSalvo === 'dark') {
+  body.classList.add('dark-mode');
+  toggleBtn.textContent = '☀️';
+} else {
+  toggleBtn.textContent = '🌙';
+}
+
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  const novoTema = body.classList.contains('dark-mode') ? 'dark' : 'light';
+  localStorage.setItem('tema', novoTema);
+  toggleBtn.textContent = novoTema === 'dark' ? '☀️' : '🌙';
 });
 
-// Formulário de prioridades
-const form = document.getElementById("formPrioridade");
-const listaPrioridades = document.getElementById("prioridadesList");
+const notificationBtn = document.getElementById("notificationBtn");
+const notificationDropdown = document.getElementById("notificationDropdown");
 
-form.addEventListener("submit", (event) => {
+notificationBtn.addEventListener("click", () => {
+  const isHidden = notificationDropdown.hasAttribute("hidden");
+  if (isHidden) {
+    notificationDropdown.removeAttribute("hidden");
+  } else {
+    notificationDropdown.setAttribute("hidden", "");
+  }
+});
+
+document.addEventListener("click", e => {
+  if (!notificationBtn.contains(e.target) && !notificationDropdown.contains(e.target)) {
+    notificationDropdown.setAttribute("hidden", "");
+  }
+});
+
+const formPrioridade = document.getElementById("formPrioridade");
+const prioridadesList = document.getElementById("prioridadesList");
+const noPrioritiesMessage = prioridadesList.querySelector('.no-priorities-message');
+
+noPrioritiesMessage.style.display = 'block';
+
+formPrioridade.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const confirmacao = confirm("Deseja realmente adicionar esta prioridade?");
-  if (!confirmacao) return;
+  if (!confirmacao) {
+    return;
+  }
 
   const nome = document.getElementById("nome").value;
   const urgencia = document.getElementById("urgencia").value;
-  const descricao = document.getElementById("descricao").value;
-  const lista = document.getElementById("lista").value;
 
-  const div = document.createElement("div");
-  div.innerHTML = `
-    <h3>${nome}</h3>
-    <p><strong>Urgência:</strong> ${urgencia}</p>
-    <p><strong>Descrição:</strong> ${descricao}</p>
-    <p><strong>Lista:</strong> ${lista}</p>
-    <hr>
-  `;
+  alert(`Prioridade "${nome}" (Urgência: ${urgencia}) adicionada com sucesso!`);
 
-  listaPrioridades.appendChild(div);
+  formPrioridade.reset();
 
-  form.reset();
+  while (prioridadesList.children.length > 1) {
+    if (prioridadesList.lastChild !== noPrioritiesMessage && prioridadesList.lastChild.tagName !== 'H2') {
+        prioridadesList.removeChild(prioridadesList.lastChild);
+    } else {
+        break;
+    }
+  }
+  noPrioritiesMessage.style.display = 'block';
 });

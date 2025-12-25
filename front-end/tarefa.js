@@ -51,3 +51,7 @@ form.addEventListener('submit', (e) => {
     }
   });
 });
+document.getElementById('notificationBtn').addEventListener('click', () => {
+  const dropdown = document.getElementById('notificationDropdown');
+  dropdown.hidden = !dropdown.hidden;
+});

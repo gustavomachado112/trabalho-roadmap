@@ -5,6 +5,8 @@ const temaSalvo = localStorage.getItem('tema') || 'light';
 if (temaSalvo === 'dark') {
   body.classList.add('dark-mode');
   toggleBtn.textContent = '☀️';
+} else {
+  toggleBtn.textContent = '🌙';
 }
 
 toggleBtn.addEventListener('click', () => {
@@ -29,5 +31,13 @@ notificationBtn.addEventListener("click", () => {
 document.addEventListener("click", e => {
   if (!notificationBtn.contains(e.target) && !notificationDropdown.contains(e.target)) {
     notificationDropdown.setAttribute("hidden", "");
+  }
+});
+
+const form = document.getElementById('eventForm');
+form.addEventListener('submit', function(event) {
+  const confirmar = confirm("Deseja realmente salvar este evento?");
+  if (!confirmar) {
+    event.preventDefault();
   }
 });
